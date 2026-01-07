@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "users": {
         "admin": {
@@ -19,3 +20,26 @@
     "notes": "Passwords are stored in plain text. For production, use hashed passwords."
 }
 
+=======
+{
+    "users": {
+        "admin": {
+            "password": "Surety@2030",
+            "role": "admin",
+            "active": true
+        },
+        "surety": {
+            "password": "admin123",
+            "role": "api",
+            "active": true
+        },
+        "surety1": {
+            "password": "surety",
+            "role": "api",
+            "active": true
+        }
+    },
+    "notes": "Passwords are stored in plain text. For production, use hashed passwords."
+}
+
+>>>>>>> 21fcbcc27f4d592ac48567ca74c7cbdd1496059f

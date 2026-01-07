@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 COMPLETE FILE LIST FOR UPLOAD
 =============================
 
@@ -57,3 +58,64 @@ UPLOAD VIA GITHUB WEB INTERFACE
 5. Upload files into respective folders
 6. Commit changes
 
+=======
+COMPLETE FILE LIST FOR UPLOAD
+=============================
+
+Upload these files to: https://github.com/tech920/motor-claim-decision-api
+
+ROOT DIRECTORY (D:\Motorclaimde):
+---------------------------------
+1. unified_api_server.py
+2. requirements.txt
+3. README.md
+4. .gitignore
+5. GITHUB_UPLOAD_INSTRUCTIONS.md
+6. PUSH_TO_GITHUB.md
+7. REPOSITORY_SUMMARY.md
+8. QUICK_START.txt
+9. README_FIRST.txt
+10. FIX_UPLOAD_ISSUE.md
+11. QUICK_UPLOAD_WEB.md
+12. FILE_LIST.txt (this file)
+
+MOTORCLAIMDECISIONLINUXTP/ FOLDER:
+-----------------------------------
+1. claim_processor.py
+2. claim_processor_api.py
+3. config_manager.py
+4. unified_processor.py
+5. excel_ocr_license_processor.py
+6. auth_manager.py
+7. api_server.py
+8. claim_config.json
+9. users.json
+
+MOTORCLAIMDECISIONLINUXCO/ FOLDER:
+-----------------------------------
+1. claim_processor.py
+2. claim_processor_api.py
+3. config_manager.py
+4. unified_processor.py
+5. excel_ocr_license_processor.py
+6. auth_manager.py
+7. api_server.py
+8. claim_config.json
+9. users.json
+
+TOTAL: 30 files
+- 12 in root
+- 9 in TP folder
+- 9 in CO folder
+
+=============================
+UPLOAD VIA GITHUB WEB INTERFACE
+=============================
+1. Go to: https://github.com/tech920/motor-claim-decision-api
+2. Click "uploading an existing file"
+3. Drag all files from D:\Motorclaimde
+4. Create folders for TP and CO
+5. Upload files into respective folders
+6. Commit changes
+
+>>>>>>> 21fcbcc27f4d592ac48567ca74c7cbdd1496059f
