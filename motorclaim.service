@@ -8,8 +8,10 @@ User=root
 WorkingDirectory=/opt/Motorclaimdecision_main
 Environment="MOTORCLAIM_BASE_DIR=/opt/Motorclaimdecision_main"
 Environment="PYTHONPATH=/opt/Motorclaimdecision_main"
-Environment="POPPLER_PATH=/opt/Library/poppler-25.07.0/bin"
-Environment="PATH=/opt/Library/poppler-25.07.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+# Set Tesseract Data Prefix
+Environment="TESSDATA_PREFIX=/opt/Library/Tesseract-OCR/tessdata/"
+# Add Poppler and Tesseract to PATH
+Environment="PATH=/opt/Library/poppler-25.07.0/Library/bin:/opt/Library/poppler-25.07.0/Library/:/opt/Library/Tesseract-OCR/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 ExecStart=/usr/bin/python3 unified_api_server.py
 Restart=always
 RestartSec=5
