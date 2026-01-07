@@ -1,0 +1,1058 @@
+2026-01-07 21:53:29 | CO_CONFIG_INITIALIZATION | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:53:29 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:53:29 | CO_CONFIG_LOADED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Files_Match: True
+2026-01-07 21:53:29 | CO_CONFIG_PATH_COMPARISON | API_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Processor_Global_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Paths_Match: True | ⚠️_WARNING: If paths don't match, claim_processor.py may read from different file!
+2026-01-07 21:53:29 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:53:29 | CO_CLAIM_PROCESSING_START | Case: MC261125303 | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | CO_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Current_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Match: True | CO_Processor_Type: ClaimProcessor | CO_Processor_Module: claim_processor
+2026-01-07 21:53:29 | BASE64_NOT_PROVIDED | Case: MC261125303
+2026-01-07 21:53:29 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:53:29 | CO_TAWUNIYA_FILTER_ENABLED | Case: MC261125303 | Only_Processing_Tawuniya: True | Match_Names: Tawuniya Cooperative Insurance Company, التعاونية للتأمين
+2026-01-07 21:53:29 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Insurance_Name_Lower: 'tawuniya cooperative insurance company'
+2026-01-07 21:53:29 | TAWUNIYA_MATCH | Case: MC261125303 | Party: 1 | Match_Type: Contains_'tawuniya' | Insurance_Name: 'Tawuniya Cooperative Insurance Company'
+2026-01-07 21:53:29 | PARTY_ACCEPTED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Reason: Tawuniya_Verified | Action: Added_To_Processing
+2026-01-07 21:53:29 | PARTY_ADDED_TO_PROCESSING | Case: MC261125303 | Party: 1 | Party_ID: 2538690385
+2026-01-07 21:53:29 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Insurance_Name_Lower: 'non-insured'
+2026-01-07 21:53:29 | PARTY_FILTERED_OUT | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Reason: Not_Tawuniya | Action: Removed_From_Processing
+2026-01-07 21:53:29 | PARALLEL_PROCESSING_START | Case: MC261125303 | Parties_Count: 1 | Max_Workers: 1
+2026-01-07 21:53:29 | SAFETY_CHECK_PASSED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Action: Proceeding_With_Processing
+2026-01-07 21:53:29 | CO_INSURANCE_NAME_EXTRACTION | Party: 0 | Insurance_Info: {'ICArabicName': 'Tawuniya Cooperative Insurance Company', 'ICEnglishName': 'Tawuniya Cooperative Insurance Company', 'policyNumber': '7006472943', 'insuranceCompanyID': '', 'vehicleID': 'KMHDG41FXGU563353', 'insuranceType': 'CO', 'InsuranceType': 'CO', 'insurance_type': 'CO'} | ICEnglishName: Tawuniya Cooperative Insurance Company | ICArabicName: Tawuniya Cooperative Insurance Company | Insurance_Name_Raw: Tawuniya Cooperative Insurance Company
+2026-01-07 21:53:29 | CO_INSURANCE_NAME_NORMALIZED | Party: 0 | Original: Tawuniya Cooperative Insurance Company | Normalized: The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)
+2026-01-07 21:53:29 | CO_INSURANCE_TYPE_EXTRACTION | Party: 0 | Insurance_Type_Extracted: 'CO' | Source: Insurance_Info or Party_Info
+2026-01-07 21:53:29 | CO_INSURANCE_TYPE_CHECK | Party: 0 | insurance_type_Input: 'CO' | is_comprehensive_Result: True | Will_Normalize: True
+2026-01-07 21:53:29 | CO_INSURANCE_TYPE_NORMALIZED | Party: 0 | Original: 'CO' | Normalized: 'comprehensive' | Source: Configuration | is_comprehensive_Flag: True
+2026-01-07 21:53:29 | CO_INSURANCE_TYPE_COMPREHENSIVE_FLAG | Party: 0 | insurance_type: 'comprehensive' | is_comprehensive: True | Rule_1_Should_Apply: False
+2026-01-07 21:53:29 | CO_INSURANCE_COOPERATIVE_FLAG_SET | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | Insurance_Name: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | Method: Helper_Function_Validation
+2026-01-07 21:53:29 | CO_PROMPT_CONFIG_SOURCE | Party: 0 | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Real: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_At_Import: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:53:29 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:53:29 | PROMPT_BUILT_FROM_CONFIG | Party: 0 | Template_Source: claim_config.json | Template_Length: 6298 | Final_Prompt_Length: 8439 | Data_JSON_Length: 2161 | Party_Index: 1
+2026-01-07 21:53:29 | CO_DATA_STRUCTURE_FOR_OLLAMA | Party: 0 | Data_JSON: {"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+2026-01-07 21:53:29 | CO_CRITICAL_FLAGS | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | is_comprehensive: True | party.insurance: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | party.insurance_type: 'comprehensive'
+2026-01-07 21:53:29 | CO_PROMPT_TEMPLATE_VERIFICATION | Party: 0 | Template_Loaded: True | Template_Has_Step1: False | Template_Has_Step2: False | Template_Has_Mandatory: True | Template_Has_Summary: False | Template_Preview: Analyze Party {party_index} for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{data}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rul...
+2026-01-07 21:53:29 | CO_FINAL_PROMPT_SNIPPET | Party: 0 | Prompt_First_2000_Chars: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "acci...
+2026-01-07 21:53:29 | CO_PROMPT_100_PERCENT_CHECK | Party: 0 | Has_Correct_Rule: False | Has_Old_Rule: False | Prompt_Length: 8439
+2026-01-07 21:53:29 | CO_FULL_PROMPT_TO_OLLAMA | Party: 0 | Full_Prompt_Complete: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:53:29 | PROMPT_BUILT | Party: 0 | Case: MC261125303 | Prompt_Length: 8439 | Liability: 100 | Insurance_Name: Tawuniya Cooperative Insurance Company | Parties_Count: 1
+2026-01-07 21:53:29 | OLLAMA_REQUEST | Party: 0 | Case: MC261125303 | Model: qwen2.5:3b | Prompt_Length: 8439 | Prompt_Preview: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehen...
+2026-01-07 21:53:29 | OLLAMA_FULL_PROMPT | Party: 0 | Case: MC261125303 | Full_Prompt: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:53:29 | OLLAMA_PROMPT_VERIFICATION | Party: 0 | Case: MC261125303 | Has_Mandatory_Flags_Section: False | Has_Correct_100_Percent_Rule: False | Has_Old_100_Percent_Rule: False | Template_Source: DEFAULT
+2026-01-07 21:53:36 | PARTY_PROCESSING_ERROR | Case: MC261125303 | Party: 1 | Error: Failed to connect to Ollama after 3 attempts. Make sure Ollama is running: ollama serve | Error_Type: ConnectionError
+2026-01-07 21:53:36 | CO_FILTERING_SUMMARY | Case: MC261125303 | Total_Parties_Requested: 2 | Tawuniya_Parties_Processed: 1 | Non_Tawuniya_Parties_Skipped: 1 | Filter_Status: Active | Response_Contains_Only_Tawuniya: True
+2026-01-07 21:53:36 | FINAL_DECISION_SUMMARY | Case: MC261125303 | Party_ID: 2538690385 | Party_Name: Unknown | Liability: 0 | Final_Decision: ERROR | Final_Classification: ERROR | Final_Reasoning: Ollama service error: Failed to connect to Ollama after 3 attempts. Make sure Ollama is running: ollama serve. Please ensure Ollama is running on http://localhost:11434 and the model 'qwen2.5:3b' is available. | Applied_Conditions: []
+2026-01-07 21:53:36 | CO_RESPONSE_PARTIES | Case: MC261125303 | Tawuniya_Parties_In_Response: ['2538690385'] | Skipped_Party_IDs: ['2237605809'] | Total_In_Response: 1 | Total_Skipped: 1
+2026-01-07 21:53:36 | CO_RESPONSE_COMPLETE | Case: MC261125303 | Status: Success | Total_Parties: 2 | Parties_Processed: 1 | Parties_Skipped: 1 | Response_JSON: {"Case_Number": "MC261125303", "Accident_Date": "2025-11-26", "Upload_Date": "2025-11-26", "Claim_requester_ID": "", "Status": "Success", "Parties": [{"Party": "Party 1", "Party_ID": "2538690385", "Decision": "ERROR", "Classification": "ERROR", "Reasoning": "Ollama service error: Failed to connect to Ollama after 3 attempts. Make sure Ollama is running: ollama serve. Please ensure Ollama is running on http://localhost:11434 and the model 'qwen2.5:3b' is available.", "Applied_Conditions": []}], "Total_Parties": 2, "Parties_Processed": 1, "LD_Rep_64bit_Received": false, "Parties_Skipped": 1, "Filter_Applied": "Only processing Tawuniya Cooperative Insurance Company parties", "Filter_Status": "Active - Non-Tawuniya parties bypassed"}
+2026-01-07 21:54:06 | CO_CONFIG_INITIALIZATION | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:54:06 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:54:06 | CO_CONFIG_LOADED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Files_Match: True
+2026-01-07 21:54:06 | CO_CONFIG_PATH_COMPARISON | API_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Processor_Global_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Paths_Match: True | ⚠️_WARNING: If paths don't match, claim_processor.py may read from different file!
+2026-01-07 21:54:06 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:54:06 | CO_CLAIM_PROCESSING_START | Case: MC261125303 | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | CO_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Current_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Match: True | CO_Processor_Type: ClaimProcessor | CO_Processor_Module: claim_processor
+2026-01-07 21:54:06 | BASE64_NOT_PROVIDED | Case: MC261125303
+2026-01-07 21:54:06 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:54:06 | CO_TAWUNIYA_FILTER_ENABLED | Case: MC261125303 | Only_Processing_Tawuniya: True | Match_Names: Tawuniya Cooperative Insurance Company, التعاونية للتأمين
+2026-01-07 21:54:06 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Insurance_Name_Lower: 'tawuniya cooperative insurance company'
+2026-01-07 21:54:06 | TAWUNIYA_MATCH | Case: MC261125303 | Party: 1 | Match_Type: Contains_'tawuniya' | Insurance_Name: 'Tawuniya Cooperative Insurance Company'
+2026-01-07 21:54:06 | PARTY_ACCEPTED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Reason: Tawuniya_Verified | Action: Added_To_Processing
+2026-01-07 21:54:06 | PARTY_ADDED_TO_PROCESSING | Case: MC261125303 | Party: 1 | Party_ID: 2538690385
+2026-01-07 21:54:06 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Insurance_Name_Lower: 'non-insured'
+2026-01-07 21:54:06 | PARTY_FILTERED_OUT | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Reason: Not_Tawuniya | Action: Removed_From_Processing
+2026-01-07 21:54:06 | PARALLEL_PROCESSING_START | Case: MC261125303 | Parties_Count: 1 | Max_Workers: 1
+2026-01-07 21:54:06 | SAFETY_CHECK_PASSED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Action: Proceeding_With_Processing
+2026-01-07 21:54:06 | CO_INSURANCE_NAME_EXTRACTION | Party: 0 | Insurance_Info: {'ICArabicName': 'Tawuniya Cooperative Insurance Company', 'ICEnglishName': 'Tawuniya Cooperative Insurance Company', 'policyNumber': '7006472943', 'insuranceCompanyID': '', 'vehicleID': 'KMHDG41FXGU563353', 'insuranceType': 'CO', 'InsuranceType': 'CO', 'insurance_type': 'CO'} | ICEnglishName: Tawuniya Cooperative Insurance Company | ICArabicName: Tawuniya Cooperative Insurance Company | Insurance_Name_Raw: Tawuniya Cooperative Insurance Company
+2026-01-07 21:54:06 | CO_INSURANCE_NAME_NORMALIZED | Party: 0 | Original: Tawuniya Cooperative Insurance Company | Normalized: The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)
+2026-01-07 21:54:06 | CO_INSURANCE_TYPE_EXTRACTION | Party: 0 | Insurance_Type_Extracted: 'CO' | Source: Insurance_Info or Party_Info
+2026-01-07 21:54:06 | CO_INSURANCE_TYPE_CHECK | Party: 0 | insurance_type_Input: 'CO' | is_comprehensive_Result: True | Will_Normalize: True
+2026-01-07 21:54:06 | CO_INSURANCE_TYPE_NORMALIZED | Party: 0 | Original: 'CO' | Normalized: 'comprehensive' | Source: Configuration | is_comprehensive_Flag: True
+2026-01-07 21:54:06 | CO_INSURANCE_TYPE_COMPREHENSIVE_FLAG | Party: 0 | insurance_type: 'comprehensive' | is_comprehensive: True | Rule_1_Should_Apply: False
+2026-01-07 21:54:06 | CO_INSURANCE_COOPERATIVE_FLAG_SET | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | Insurance_Name: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | Method: Helper_Function_Validation
+2026-01-07 21:54:06 | CO_PROMPT_CONFIG_SOURCE | Party: 0 | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Real: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_At_Import: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:54:06 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:54:06 | PROMPT_BUILT_FROM_CONFIG | Party: 0 | Template_Source: claim_config.json | Template_Length: 6298 | Final_Prompt_Length: 8439 | Data_JSON_Length: 2161 | Party_Index: 1
+2026-01-07 21:54:06 | CO_DATA_STRUCTURE_FOR_OLLAMA | Party: 0 | Data_JSON: {"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+2026-01-07 21:54:06 | CO_CRITICAL_FLAGS | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | is_comprehensive: True | party.insurance: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | party.insurance_type: 'comprehensive'
+2026-01-07 21:54:06 | CO_PROMPT_TEMPLATE_VERIFICATION | Party: 0 | Template_Loaded: True | Template_Has_Step1: False | Template_Has_Step2: False | Template_Has_Mandatory: True | Template_Has_Summary: False | Template_Preview: Analyze Party {party_index} for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{data}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rul...
+2026-01-07 21:54:06 | CO_FINAL_PROMPT_SNIPPET | Party: 0 | Prompt_First_2000_Chars: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "acci...
+2026-01-07 21:54:06 | CO_PROMPT_100_PERCENT_CHECK | Party: 0 | Has_Correct_Rule: False | Has_Old_Rule: False | Prompt_Length: 8439
+2026-01-07 21:54:06 | CO_FULL_PROMPT_TO_OLLAMA | Party: 0 | Full_Prompt_Complete: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:54:06 | PROMPT_BUILT | Party: 0 | Case: MC261125303 | Prompt_Length: 8439 | Liability: 100 | Insurance_Name: Tawuniya Cooperative Insurance Company | Parties_Count: 1
+2026-01-07 21:54:06 | OLLAMA_REQUEST | Party: 0 | Case: MC261125303 | Model: qwen2.5:3b | Prompt_Length: 8439 | Prompt_Preview: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehen...
+2026-01-07 21:54:06 | OLLAMA_FULL_PROMPT | Party: 0 | Case: MC261125303 | Full_Prompt: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:54:06 | OLLAMA_PROMPT_VERIFICATION | Party: 0 | Case: MC261125303 | Has_Mandatory_Flags_Section: False | Has_Correct_100_Percent_Rule: False | Has_Old_100_Percent_Rule: False | Template_Source: DEFAULT
+2026-01-07 21:54:14 | PARTY_PROCESSING_ERROR | Case: MC261125303 | Party: 1 | Error: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Doc | Error_Type: ConnectionError
+2026-01-07 21:54:14 | CO_FILTERING_SUMMARY | Case: MC261125303 | Total_Parties_Requested: 2 | Tawuniya_Parties_Processed: 1 | Non_Tawuniya_Parties_Skipped: 1 | Filter_Status: Active | Response_Contains_Only_Tawuniya: True
+2026-01-07 21:54:14 | FINAL_DECISION_SUMMARY | Case: MC261125303 | Party_ID: 2538690385 | Party_Name: Unknown | Liability: 0 | Final_Decision: ERROR | Final_Classification: ERROR | Final_Reasoning: Error processing party: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Docker logs: docker logs ollama-ai | Applied_Conditions: []
+2026-01-07 21:54:14 | CO_RESPONSE_PARTIES | Case: MC261125303 | Tawuniya_Parties_In_Response: ['2538690385'] | Skipped_Party_IDs: ['2237605809'] | Total_In_Response: 1 | Total_Skipped: 1
+2026-01-07 21:54:14 | CO_RESPONSE_COMPLETE | Case: MC261125303 | Status: Success | Total_Parties: 2 | Parties_Processed: 1 | Parties_Skipped: 1 | Response_JSON: {"Case_Number": "MC261125303", "Accident_Date": "2025-11-26", "Upload_Date": "2025-11-26", "Claim_requester_ID": "", "Status": "Success", "Parties": [{"Party": "Party 1", "Party_ID": "2538690385", "Decision": "ERROR", "Classification": "ERROR", "Reasoning": "Error processing party: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Docker logs: docker logs ollama-ai", "Applied_Conditions": []}], "Total_Parties": 2, "Parties_Processed": 1, "LD_Rep_64bit_Received": false, "Parties_Skipped": 1, "Filter_Applied": "Only processing Tawuniya Cooperative Insurance Company parties", "Filter_Status": "Active - Non-Tawuniya parties bypassed"}
+2026-01-07 21:55:11 | CO_CONFIG_INITIALIZATION | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:55:11 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:55:11 | CO_CONFIG_LOADED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Files_Match: True
+2026-01-07 21:55:11 | CO_CONFIG_PATH_COMPARISON | API_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Processor_Global_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Paths_Match: True | ⚠️_WARNING: If paths don't match, claim_processor.py may read from different file!
+2026-01-07 21:55:11 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:55:11 | CO_CLAIM_PROCESSING_START | Case: MC261125303 | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | CO_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Current_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Match: True | CO_Processor_Type: ClaimProcessor | CO_Processor_Module: claim_processor
+2026-01-07 21:55:11 | BASE64_NOT_PROVIDED | Case: MC261125303
+2026-01-07 21:55:11 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:55:11 | CO_TAWUNIYA_FILTER_ENABLED | Case: MC261125303 | Only_Processing_Tawuniya: True | Match_Names: Tawuniya Cooperative Insurance Company, التعاونية للتأمين
+2026-01-07 21:55:11 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Insurance_Name_Lower: 'tawuniya cooperative insurance company'
+2026-01-07 21:55:11 | TAWUNIYA_MATCH | Case: MC261125303 | Party: 1 | Match_Type: Contains_'tawuniya' | Insurance_Name: 'Tawuniya Cooperative Insurance Company'
+2026-01-07 21:55:11 | PARTY_ACCEPTED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Reason: Tawuniya_Verified | Action: Added_To_Processing
+2026-01-07 21:55:11 | PARTY_ADDED_TO_PROCESSING | Case: MC261125303 | Party: 1 | Party_ID: 2538690385
+2026-01-07 21:55:11 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Insurance_Name_Lower: 'non-insured'
+2026-01-07 21:55:11 | PARTY_FILTERED_OUT | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Reason: Not_Tawuniya | Action: Removed_From_Processing
+2026-01-07 21:55:11 | PARALLEL_PROCESSING_START | Case: MC261125303 | Parties_Count: 1 | Max_Workers: 1
+2026-01-07 21:55:11 | SAFETY_CHECK_PASSED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Action: Proceeding_With_Processing
+2026-01-07 21:55:11 | CO_INSURANCE_NAME_EXTRACTION | Party: 0 | Insurance_Info: {'ICArabicName': 'Tawuniya Cooperative Insurance Company', 'ICEnglishName': 'Tawuniya Cooperative Insurance Company', 'policyNumber': '7006472943', 'insuranceCompanyID': '', 'vehicleID': 'KMHDG41FXGU563353', 'insuranceType': 'CO', 'InsuranceType': 'CO', 'insurance_type': 'CO'} | ICEnglishName: Tawuniya Cooperative Insurance Company | ICArabicName: Tawuniya Cooperative Insurance Company | Insurance_Name_Raw: Tawuniya Cooperative Insurance Company
+2026-01-07 21:55:11 | CO_INSURANCE_NAME_NORMALIZED | Party: 0 | Original: Tawuniya Cooperative Insurance Company | Normalized: The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)
+2026-01-07 21:55:11 | CO_INSURANCE_TYPE_EXTRACTION | Party: 0 | Insurance_Type_Extracted: 'CO' | Source: Insurance_Info or Party_Info
+2026-01-07 21:55:11 | CO_INSURANCE_TYPE_CHECK | Party: 0 | insurance_type_Input: 'CO' | is_comprehensive_Result: True | Will_Normalize: True
+2026-01-07 21:55:11 | CO_INSURANCE_TYPE_NORMALIZED | Party: 0 | Original: 'CO' | Normalized: 'comprehensive' | Source: Configuration | is_comprehensive_Flag: True
+2026-01-07 21:55:11 | CO_INSURANCE_TYPE_COMPREHENSIVE_FLAG | Party: 0 | insurance_type: 'comprehensive' | is_comprehensive: True | Rule_1_Should_Apply: False
+2026-01-07 21:55:11 | CO_INSURANCE_COOPERATIVE_FLAG_SET | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | Insurance_Name: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | Method: Helper_Function_Validation
+2026-01-07 21:55:11 | CO_PROMPT_CONFIG_SOURCE | Party: 0 | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Real: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_At_Import: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:55:11 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:55:11 | PROMPT_BUILT_FROM_CONFIG | Party: 0 | Template_Source: claim_config.json | Template_Length: 6298 | Final_Prompt_Length: 8439 | Data_JSON_Length: 2161 | Party_Index: 1
+2026-01-07 21:55:11 | CO_DATA_STRUCTURE_FOR_OLLAMA | Party: 0 | Data_JSON: {"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+2026-01-07 21:55:11 | CO_CRITICAL_FLAGS | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | is_comprehensive: True | party.insurance: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | party.insurance_type: 'comprehensive'
+2026-01-07 21:55:11 | CO_PROMPT_TEMPLATE_VERIFICATION | Party: 0 | Template_Loaded: True | Template_Has_Step1: False | Template_Has_Step2: False | Template_Has_Mandatory: True | Template_Has_Summary: False | Template_Preview: Analyze Party {party_index} for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{data}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rul...
+2026-01-07 21:55:11 | CO_FINAL_PROMPT_SNIPPET | Party: 0 | Prompt_First_2000_Chars: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "acci...
+2026-01-07 21:55:11 | CO_PROMPT_100_PERCENT_CHECK | Party: 0 | Has_Correct_Rule: False | Has_Old_Rule: False | Prompt_Length: 8439
+2026-01-07 21:55:11 | CO_FULL_PROMPT_TO_OLLAMA | Party: 0 | Full_Prompt_Complete: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:55:11 | PROMPT_BUILT | Party: 0 | Case: MC261125303 | Prompt_Length: 8439 | Liability: 100 | Insurance_Name: Tawuniya Cooperative Insurance Company | Parties_Count: 1
+2026-01-07 21:55:11 | OLLAMA_REQUEST | Party: 0 | Case: MC261125303 | Model: qwen2.5:3b | Prompt_Length: 8439 | Prompt_Preview: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehen...
+2026-01-07 21:55:11 | OLLAMA_FULL_PROMPT | Party: 0 | Case: MC261125303 | Full_Prompt: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:55:11 | OLLAMA_PROMPT_VERIFICATION | Party: 0 | Case: MC261125303 | Has_Mandatory_Flags_Section: False | Has_Correct_100_Percent_Rule: False | Has_Old_100_Percent_Rule: False | Template_Source: DEFAULT
+2026-01-07 21:55:18 | PARTY_PROCESSING_ERROR | Case: MC261125303 | Party: 1 | Error: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Doc | Error_Type: ConnectionError
+2026-01-07 21:55:18 | CO_FILTERING_SUMMARY | Case: MC261125303 | Total_Parties_Requested: 2 | Tawuniya_Parties_Processed: 1 | Non_Tawuniya_Parties_Skipped: 1 | Filter_Status: Active | Response_Contains_Only_Tawuniya: True
+2026-01-07 21:55:18 | FINAL_DECISION_SUMMARY | Case: MC261125303 | Party_ID: 2538690385 | Party_Name: Unknown | Liability: 0 | Final_Decision: ERROR | Final_Classification: ERROR | Final_Reasoning: Error processing party: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Docker logs: docker logs ollama-ai | Applied_Conditions: []
+2026-01-07 21:55:18 | CO_RESPONSE_PARTIES | Case: MC261125303 | Tawuniya_Parties_In_Response: ['2538690385'] | Skipped_Party_IDs: ['2237605809'] | Total_In_Response: 1 | Total_Skipped: 1
+2026-01-07 21:55:18 | CO_RESPONSE_COMPLETE | Case: MC261125303 | Status: Success | Total_Parties: 2 | Parties_Processed: 1 | Parties_Skipped: 1 | Response_JSON: {"Case_Number": "MC261125303", "Accident_Date": "2025-11-26", "Upload_Date": "2025-11-26", "Claim_requester_ID": "", "Status": "Success", "Parties": [{"Party": "Party 1", "Party_ID": "2538690385", "Decision": "ERROR", "Classification": "ERROR", "Reasoning": "Error processing party: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Docker logs: docker logs ollama-ai", "Applied_Conditions": []}], "Total_Parties": 2, "Parties_Processed": 1, "LD_Rep_64bit_Received": false, "Parties_Skipped": 1, "Filter_Applied": "Only processing Tawuniya Cooperative Insurance Company parties", "Filter_Status": "Active - Non-Tawuniya parties bypassed"}
+2026-01-07 21:56:05 | CO_CONFIG_INITIALIZATION | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:56:05 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:56:05 | CO_CONFIG_LOADED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Files_Match: True
+2026-01-07 21:56:05 | CO_CONFIG_PATH_COMPARISON | API_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Processor_Global_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Paths_Match: True | ⚠️_WARNING: If paths don't match, claim_processor.py may read from different file!
+2026-01-07 21:56:05 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:56:05 | CO_CLAIM_PROCESSING_START | Case: MC261125303 | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | CO_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Current_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Match: True | CO_Processor_Type: ClaimProcessor | CO_Processor_Module: claim_processor
+2026-01-07 21:56:05 | BASE64_NOT_PROVIDED | Case: MC261125303
+2026-01-07 21:56:05 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:56:05 | CO_TAWUNIYA_FILTER_ENABLED | Case: MC261125303 | Only_Processing_Tawuniya: True | Match_Names: Tawuniya Cooperative Insurance Company, التعاونية للتأمين
+2026-01-07 21:56:05 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Insurance_Name_Lower: 'tawuniya cooperative insurance company'
+2026-01-07 21:56:05 | TAWUNIYA_MATCH | Case: MC261125303 | Party: 1 | Match_Type: Contains_'tawuniya' | Insurance_Name: 'Tawuniya Cooperative Insurance Company'
+2026-01-07 21:56:05 | PARTY_ACCEPTED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Reason: Tawuniya_Verified | Action: Added_To_Processing
+2026-01-07 21:56:05 | PARTY_ADDED_TO_PROCESSING | Case: MC261125303 | Party: 1 | Party_ID: 2538690385
+2026-01-07 21:56:05 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Insurance_Name_Lower: 'non-insured'
+2026-01-07 21:56:05 | PARTY_FILTERED_OUT | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Reason: Not_Tawuniya | Action: Removed_From_Processing
+2026-01-07 21:56:05 | PARALLEL_PROCESSING_START | Case: MC261125303 | Parties_Count: 1 | Max_Workers: 1
+2026-01-07 21:56:05 | SAFETY_CHECK_PASSED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Action: Proceeding_With_Processing
+2026-01-07 21:56:05 | CO_INSURANCE_NAME_EXTRACTION | Party: 0 | Insurance_Info: {'ICArabicName': 'Tawuniya Cooperative Insurance Company', 'ICEnglishName': 'Tawuniya Cooperative Insurance Company', 'policyNumber': '7006472943', 'insuranceCompanyID': '', 'vehicleID': 'KMHDG41FXGU563353', 'insuranceType': 'CO', 'InsuranceType': 'CO', 'insurance_type': 'CO'} | ICEnglishName: Tawuniya Cooperative Insurance Company | ICArabicName: Tawuniya Cooperative Insurance Company | Insurance_Name_Raw: Tawuniya Cooperative Insurance Company
+2026-01-07 21:56:05 | CO_INSURANCE_NAME_NORMALIZED | Party: 0 | Original: Tawuniya Cooperative Insurance Company | Normalized: The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)
+2026-01-07 21:56:05 | CO_INSURANCE_TYPE_EXTRACTION | Party: 0 | Insurance_Type_Extracted: 'CO' | Source: Insurance_Info or Party_Info
+2026-01-07 21:56:05 | CO_INSURANCE_TYPE_CHECK | Party: 0 | insurance_type_Input: 'CO' | is_comprehensive_Result: True | Will_Normalize: True
+2026-01-07 21:56:05 | CO_INSURANCE_TYPE_NORMALIZED | Party: 0 | Original: 'CO' | Normalized: 'comprehensive' | Source: Configuration | is_comprehensive_Flag: True
+2026-01-07 21:56:05 | CO_INSURANCE_TYPE_COMPREHENSIVE_FLAG | Party: 0 | insurance_type: 'comprehensive' | is_comprehensive: True | Rule_1_Should_Apply: False
+2026-01-07 21:56:05 | CO_INSURANCE_COOPERATIVE_FLAG_SET | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | Insurance_Name: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | Method: Helper_Function_Validation
+2026-01-07 21:56:05 | CO_PROMPT_CONFIG_SOURCE | Party: 0 | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Real: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_At_Import: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:56:05 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:56:05 | PROMPT_BUILT_FROM_CONFIG | Party: 0 | Template_Source: claim_config.json | Template_Length: 6298 | Final_Prompt_Length: 8439 | Data_JSON_Length: 2161 | Party_Index: 1
+2026-01-07 21:56:05 | CO_DATA_STRUCTURE_FOR_OLLAMA | Party: 0 | Data_JSON: {"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+2026-01-07 21:56:05 | CO_CRITICAL_FLAGS | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | is_comprehensive: True | party.insurance: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | party.insurance_type: 'comprehensive'
+2026-01-07 21:56:05 | CO_PROMPT_TEMPLATE_VERIFICATION | Party: 0 | Template_Loaded: True | Template_Has_Step1: False | Template_Has_Step2: False | Template_Has_Mandatory: True | Template_Has_Summary: False | Template_Preview: Analyze Party {party_index} for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{data}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rul...
+2026-01-07 21:56:05 | CO_FINAL_PROMPT_SNIPPET | Party: 0 | Prompt_First_2000_Chars: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "acci...
+2026-01-07 21:56:05 | CO_PROMPT_100_PERCENT_CHECK | Party: 0 | Has_Correct_Rule: False | Has_Old_Rule: False | Prompt_Length: 8439
+2026-01-07 21:56:05 | CO_FULL_PROMPT_TO_OLLAMA | Party: 0 | Full_Prompt_Complete: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:56:05 | PROMPT_BUILT | Party: 0 | Case: MC261125303 | Prompt_Length: 8439 | Liability: 100 | Insurance_Name: Tawuniya Cooperative Insurance Company | Parties_Count: 1
+2026-01-07 21:56:05 | OLLAMA_REQUEST | Party: 0 | Case: MC261125303 | Model: qwen2.5:3b | Prompt_Length: 8439 | Prompt_Preview: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehen...
+2026-01-07 21:56:05 | OLLAMA_FULL_PROMPT | Party: 0 | Case: MC261125303 | Full_Prompt: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:56:05 | OLLAMA_PROMPT_VERIFICATION | Party: 0 | Case: MC261125303 | Has_Mandatory_Flags_Section: False | Has_Correct_100_Percent_Rule: False | Has_Old_100_Percent_Rule: False | Template_Source: DEFAULT
+2026-01-07 21:56:12 | PARTY_PROCESSING_ERROR | Case: MC261125303 | Party: 1 | Error: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Doc | Error_Type: ConnectionError
+2026-01-07 21:56:12 | CO_FILTERING_SUMMARY | Case: MC261125303 | Total_Parties_Requested: 2 | Tawuniya_Parties_Processed: 1 | Non_Tawuniya_Parties_Skipped: 1 | Filter_Status: Active | Response_Contains_Only_Tawuniya: True
+2026-01-07 21:56:12 | FINAL_DECISION_SUMMARY | Case: MC261125303 | Party_ID: 2538690385 | Party_Name: Unknown | Liability: 0 | Final_Decision: ERROR | Final_Classification: ERROR | Final_Reasoning: Error processing party: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Docker logs: docker logs ollama-ai | Applied_Conditions: []
+2026-01-07 21:56:12 | CO_RESPONSE_PARTIES | Case: MC261125303 | Tawuniya_Parties_In_Response: ['2538690385'] | Skipped_Party_IDs: ['2237605809'] | Total_In_Response: 1 | Total_Skipped: 1
+2026-01-07 21:56:12 | CO_RESPONSE_COMPLETE | Case: MC261125303 | Status: Success | Total_Parties: 2 | Parties_Processed: 1 | Parties_Skipped: 1 | Response_JSON: {"Case_Number": "MC261125303", "Accident_Date": "2025-11-26", "Upload_Date": "2025-11-26", "Claim_requester_ID": "", "Status": "Success", "Parties": [{"Party": "Party 1", "Party_ID": "2538690385", "Decision": "ERROR", "Classification": "ERROR", "Reasoning": "Error processing party: Ollama returned an HTML error page instead of JSON after 3 attempts. This usually means the request timed out or the connection was closed. The model (qwen2.5:14b) may need more time on CPU. Check Docker logs: docker logs ollama-ai", "Applied_Conditions": []}], "Total_Parties": 2, "Parties_Processed": 1, "LD_Rep_64bit_Received": false, "Parties_Skipped": 1, "Filter_Applied": "Only processing Tawuniya Cooperative Insurance Company parties", "Filter_Status": "Active - Non-Tawuniya parties bypassed"}
+2026-01-07 21:57:04 | CO_CONFIG_INITIALIZATION | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:57:04 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:57:04 | CO_CONFIG_LOADED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Files_Match: True
+2026-01-07 21:57:04 | CO_CONFIG_PATH_COMPARISON | API_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Processor_Global_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Paths_Match: True | ⚠️_WARNING: If paths don't match, claim_processor.py may read from different file!
+2026-01-07 21:57:04 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:57:04 | CO_CLAIM_PROCESSING_START | Case: MC261125303 | CO_Directory: /workspace/MotorclaimdecisionlinuxCO | CO_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Current_Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Match: True | CO_Processor_Type: ClaimProcessor | CO_Processor_Module: claim_processor
+2026-01-07 21:57:04 | BASE64_NOT_PROVIDED | Case: MC261125303
+2026-01-07 21:57:04 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:57:04 | CO_TAWUNIYA_FILTER_ENABLED | Case: MC261125303 | Only_Processing_Tawuniya: True | Match_Names: Tawuniya Cooperative Insurance Company, التعاونية للتأمين
+2026-01-07 21:57:04 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Insurance_Name_Lower: 'tawuniya cooperative insurance company'
+2026-01-07 21:57:04 | TAWUNIYA_MATCH | Case: MC261125303 | Party: 1 | Match_Type: Contains_'tawuniya' | Insurance_Name: 'Tawuniya Cooperative Insurance Company'
+2026-01-07 21:57:04 | PARTY_ACCEPTED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Reason: Tawuniya_Verified | Action: Added_To_Processing
+2026-01-07 21:57:04 | PARTY_ADDED_TO_PROCESSING | Case: MC261125303 | Party: 1 | Party_ID: 2538690385
+2026-01-07 21:57:04 | TAWUNIYA_FILTER_CHECK | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Insurance_Name_Lower: 'non-insured'
+2026-01-07 21:57:04 | PARTY_FILTERED_OUT | Case: MC261125303 | Party: 2 | Party_ID: 2237605809 | Insurance_Name: 'non-insured' | Reason: Not_Tawuniya | Action: Removed_From_Processing
+2026-01-07 21:57:04 | PARALLEL_PROCESSING_START | Case: MC261125303 | Parties_Count: 1 | Max_Workers: 1
+2026-01-07 21:57:04 | SAFETY_CHECK_PASSED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Insurance_Name: 'Tawuniya Cooperative Insurance Company' | Action: Proceeding_With_Processing
+2026-01-07 21:57:04 | CO_INSURANCE_NAME_EXTRACTION | Party: 0 | Insurance_Info: {'ICArabicName': 'Tawuniya Cooperative Insurance Company', 'ICEnglishName': 'Tawuniya Cooperative Insurance Company', 'policyNumber': '7006472943', 'insuranceCompanyID': '', 'vehicleID': 'KMHDG41FXGU563353', 'insuranceType': 'CO', 'InsuranceType': 'CO', 'insurance_type': 'CO'} | ICEnglishName: Tawuniya Cooperative Insurance Company | ICArabicName: Tawuniya Cooperative Insurance Company | Insurance_Name_Raw: Tawuniya Cooperative Insurance Company
+2026-01-07 21:57:04 | CO_INSURANCE_NAME_NORMALIZED | Party: 0 | Original: Tawuniya Cooperative Insurance Company | Normalized: The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)
+2026-01-07 21:57:04 | CO_INSURANCE_TYPE_EXTRACTION | Party: 0 | Insurance_Type_Extracted: 'CO' | Source: Insurance_Info or Party_Info
+2026-01-07 21:57:04 | CO_INSURANCE_TYPE_CHECK | Party: 0 | insurance_type_Input: 'CO' | is_comprehensive_Result: True | Will_Normalize: True
+2026-01-07 21:57:04 | CO_INSURANCE_TYPE_NORMALIZED | Party: 0 | Original: 'CO' | Normalized: 'comprehensive' | Source: Configuration | is_comprehensive_Flag: True
+2026-01-07 21:57:04 | CO_INSURANCE_TYPE_COMPREHENSIVE_FLAG | Party: 0 | insurance_type: 'comprehensive' | is_comprehensive: True | Rule_1_Should_Apply: False
+2026-01-07 21:57:04 | CO_INSURANCE_COOPERATIVE_FLAG_SET | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | Insurance_Name: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | Method: Helper_Function_Validation
+2026-01-07 21:57:04 | CO_PROMPT_CONFIG_SOURCE | Party: 0 | Config_Manager_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Abs: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Manager_File_Real: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_At_Import: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:57:04 | PROMPT_BUILT_FROM_CONFIG | Party: 0 | Template_Source: claim_config.json | Template_Length: 6298 | Final_Prompt_Length: 8439 | Data_JSON_Length: 2161 | Party_Index: 1
+2026-01-07 21:57:04 | CO_DATA_STRUCTURE_FOR_OLLAMA | Party: 0 | Data_JSON: {"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+2026-01-07 21:57:04 | CO_CRITICAL_FLAGS | Party: 0 | is_insured_with_cooperative: True | is_cooperative: True | is_comprehensive: True | party.insurance: 'The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)' | party.insurance_type: 'comprehensive'
+2026-01-07 21:57:04 | CO_PROMPT_TEMPLATE_VERIFICATION | Party: 0 | Template_Loaded: True | Template_Has_Step1: False | Template_Has_Step2: False | Template_Has_Mandatory: True | Template_Has_Summary: False | Template_Preview: Analyze Party {party_index} for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{data}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rul...
+2026-01-07 21:57:04 | CO_FINAL_PROMPT_SNIPPET | Party: 0 | Prompt_First_2000_Chars: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "acci...
+2026-01-07 21:57:04 | CO_PROMPT_100_PERCENT_CHECK | Party: 0 | Has_Correct_Rule: False | Has_Old_Rule: False | Prompt_Length: 8439
+2026-01-07 21:57:04 | CO_FULL_PROMPT_TO_OLLAMA | Party: 0 | Full_Prompt_Complete: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:57:04 | PROMPT_BUILT | Party: 0 | Case: MC261125303 | Prompt_Length: 8439 | Liability: 100 | Insurance_Name: Tawuniya Cooperative Insurance Company | Parties_Count: 1
+2026-01-07 21:57:04 | OLLAMA_REQUEST | Party: 0 | Case: MC261125303 | Model: qwen2.5:3b | Prompt_Length: 8439 | Prompt_Preview: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehen...
+2026-01-07 21:57:04 | OLLAMA_FULL_PROMPT | Party: 0 | Case: MC261125303 | Full_Prompt: Analyze Party 1 for a Tawuniya (The Cooperative) insurance claim decision.
+
+DATA (JSON):
+{"party_index": 0, "liability": 100, "is_cooperative": true, "is_insured_with_cooperative": true, "is_comprehensive": true, "accident_description": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's", "party": {"id": "2538690385", "name": "After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1.", "insurance": "The Cooperative Insurance Company (also known as Tawuniya Cooperative Insurance Company)", "insurance_type": "comprehensive", "policyholder_id": "7006472943", "policyholder_name": "فرع مؤسسة سعد مرزوق", "vehicle_serial": "KMHDG41FXGU563353", "vehicle_make": "Hyundai", "vehicle_model": "النترا", "license_expiry": "2026-11-05", "license_type_from_make_model": "", "license_type_from_request": "Private License", "recovery": "", "accident_date": "2025-11-26"}, "prechecks": {"license_expired_and_not_renewed_within_50_days": false, "accident_older_than_90_days": false, "days_since_accident": 42}, "other_parties": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": ""}
+
+INSTRUCTIONS (deterministic, use ONLY fields in the JSON):
+
+1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):
+   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above
+     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`
+     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2
+   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field
+     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY
+     * If NOT found → Rule #2 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.
+
+2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):
+   - FIRST: Check `data.is_comprehensive` in the JSON above
+     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1
+   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)
+     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']
+     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY
+     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)
+   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.
+
+3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:
+   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)
+   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)
+   3. license invalid/suspended/expired and not renewed within 50 days
+   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)
+   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)
+   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)
+   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)
+   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)
+   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)
+   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)
+   11. damage to goods/personal belongings (check party.goods_damage_flag)
+   12. damage to trailer (check party.trailer_flag)
+   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)
+   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)
+   15. policy usage violation (check party.policy_usage_violation_flag)
+   16. excess passengers or cargo (check party.excess_passengers_flag)
+   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)
+   18. driving under influence (check party.dui_flag)
+   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)
+   20. operating as work machine excluded (check party.work_machine_flag)
+   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)
+   22. criminal/hostile acts by driver (check party.criminal_act_flag)
+   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)
+   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)
+   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)
+   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)
+   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)
+   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)
+   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)
+   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like ["2", "3"])
+
+4) Decision post-processing (UNAMBIGUOUS and MANDATORY):
+   - If applied_conditions non-empty => decision remains 'REJECTED'.
+   - If applied_conditions empty => decision = 'ACCEPTED'.
+   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.
+   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.
+
+5) Output JSON (exactly this object, nothing else):
+{
+  "decision": "REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED",
+  "reasoning": "Very brief reason in English (use only JSON fields)",
+  "classification": "Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')",
+  "applied_conditions": ["1", "3", ... ]
+}
+
+IMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.
+2026-01-07 21:57:04 | OLLAMA_PROMPT_VERIFICATION | Party: 0 | Case: MC261125303 | Has_Mandatory_Flags_Section: False | Has_Correct_100_Percent_Rule: False | Has_Old_100_Percent_Rule: False | Template_Source: DEFAULT
+2026-01-07 21:57:04 | OLLAMA_RESPONSE | Party: 0 | Case: MC261125303 | Model: qwen2.5:3b | Status: SUCCESS | Response_Length: 184 | Response_Preview: {"decision": "ACCEPTED_WITH_RECOVERY", "reasoning": "First party has 100% liability but validation checks are passed.", "classification": "Validation Passed", "applied_conditions": []}...
+2026-01-07 21:57:04 | OLLAMA_FULL_RESPONSE | Party: 0 | Case: MC261125303 | Full_Response: {"decision": "ACCEPTED_WITH_RECOVERY", "reasoning": "First party has 100% liability but validation checks are passed.", "classification": "Validation Passed", "applied_conditions": []}
+2026-01-07 21:57:04 | OLLAMA_DECISION_DETAILS | Party: 0 | Case: MC261125303 | Decision: ACCEPTED_WITH_RECOVERY | Classification: Validation Passed | Applied_Conditions: [] | Reasoning: First party has 100% liability but validation checks are passed.
+2026-01-07 21:57:04 | DECISION_PARSING_START | Party: 0 | Case: MC261125303 | Response_Length: 184 | Has_JSON_Block: False
+2026-01-07 21:57:04 | OLLAMA_RAW_RESPONSE | Party: 0 | Case: MC261125303 | Raw_Response_Complete: {"decision": "ACCEPTED_WITH_RECOVERY", "reasoning": "First party has 100% liability but validation checks are passed.", "classification": "Validation Passed", "applied_conditions": []}
+2026-01-07 21:57:04 | JSON_EXTRACTION | Party: 0 | Case: MC261125303 | Format: Raw_JSON | Length: 184 | Raw_JSON: {"decision": "ACCEPTED_WITH_RECOVERY", "reasoning": "First party has 100% liability but validation checks are passed.", "classification": "Validation Passed", "applied_conditions": []}
+2026-01-07 21:57:04 | DECISION_PARSED | Party: 0 | Case: MC261125303 | Decision: ACCEPTED_WITH_RECOVERY | Classification: Validation Passed | Reasoning: First party has 100% liability but validation checks are passed. | Applied_Conditions: [] | Full_Decision_JSON: {"decision": "ACCEPTED_WITH_RECOVERY", "reasoning": "First party has 100% liability but validation checks are passed.", "classification": "Validation Passed", "applied_conditions": []}
+2026-01-07 21:57:04 | DECISION_VALIDATION | Party: 0 | Case: MC261125303 | Decision_Valid: False | Has_100_Percent_Rule: False | Has_Non_Existent_Rule: False | Has_Non_Cooperative: False | Applied_Conditions_Count: 0
+2026-01-07 21:57:04 | PARTY_DECISION_FINAL | Party: 0 | Case: MC261125303 | Party_Name: رهان علي علي مالك | Liability: 100 | Final_Decision: ACCEPTED_WITH_RECOVERY | Final_Classification: Validation Passed | Final_Reasoning: First party has 100% liability but validation checks are passed. | Applied_Conditions: [] | Model_Used: qwen2.5:3b | Timestamp: 2026-01-07T21:57:04.153840
+2026-01-07 21:57:04 | PARTY_RESULT_RECEIVED | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Decision: ACCEPTED_WITH_RECOVERY | Classification: Validation Passed | Reasoning: First party has 100% liability but validation checks are passed. | Applied_Conditions: []
+2026-01-07 21:57:04 | RESPONSE_BUILDING | Case: MC261125303 | Party: 1 | Party_ID: 2538690385 | Response_Decision: ACCEPTED_WITH_RECOVERY | Response_Classification: Validation Passed | Response_Reasoning: First party has 100% liability but validation checks are passed.
+2026-01-07 21:57:04 | CONFIG_RELOAD_REQUESTED | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_START | Config_File_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_File_Exists: True | Config_File_Size: 41701 bytes | Config_File_Modified: 2026-01-07T21:29:43.872811 | Config_File_Real_Path: /workspace/MotorclaimdecisionlinuxCO/claim_config.json
+2026-01-07 21:57:04 | CONFIG_LOAD_SUCCESS | Config_File: /workspace/MotorclaimdecisionlinuxCO/claim_config.json | Config_Version: 1.0 | Last_Updated: 2026-01-06T22:33:58.766701 | Has_Compact_Template: True | Compact_Template_Length: 6298 | Template_Has_Step1: False | Template_Has_Mandatory: False | Template_Has_Old_Rule: False
+2026-01-07 21:57:04 | CO_FILTERING_SUMMARY | Case: MC261125303 | Total_Parties_Requested: 2 | Tawuniya_Parties_Processed: 1 | Non_Tawuniya_Parties_Skipped: 1 | Filter_Status: Active | Response_Contains_Only_Tawuniya: True
+2026-01-07 21:57:04 | FINAL_DECISION_SUMMARY | Case: MC261125303 | Party_ID: 2538690385 | Party_Name: رهان علي علي مالك | Liability: 100 | Final_Decision: ACCEPTED_WITH_RECOVERY | Final_Classification: Validation Passed | Final_Reasoning: First party has 100% liability but validation checks are passed. | Applied_Conditions: []
+2026-01-07 21:57:04 | CO_RESPONSE_PARTIES | Case: MC261125303 | Tawuniya_Parties_In_Response: ['2538690385'] | Skipped_Party_IDs: ['2237605809'] | Total_In_Response: 1 | Total_Skipped: 1
+2026-01-07 21:57:04 | CO_RESPONSE_COMPLETE | Case: MC261125303 | Status: Success | Total_Parties: 2 | Parties_Processed: 1 | Parties_Skipped: 1 | Response_JSON: {"Case_Number": "MC261125303", "Accident_Date": "2025-11-26", "Upload_Date": "2025-11-26", "Claim_requester_ID": "", "Status": "Success", "Parties": [{"Party": "Party 1", "Party_ID": "2538690385", "Party_Name": "رهان علي علي مالك", "Liability": 100, "Decision": "ACCEPTED_WITH_RECOVERY", "Classification": "Validation Passed", "Reasoning": "First party has 100% liability but validation checks are passed.", "Applied_Conditions": [], "isDAA": false, "Suspect_as_Fraud": null, "DaaReasonEnglish": "", "Policyholder_ID": "7006472943", "Policyholdername": "فرع مؤسسة سعد مرزوق", "Suspected_Fraud": null, "model_recovery": false, "License_Type_From_Make_Model": ""}], "Total_Parties": 2, "Parties_Processed": 1, "LD_Rep_64bit_Received": false, "Parties_Skipped": 1, "Filter_Applied": "Only processing Tawuniya Cooperative Insurance Company parties", "Filter_Status": "Active - Non-Tawuniya parties bypassed"}
