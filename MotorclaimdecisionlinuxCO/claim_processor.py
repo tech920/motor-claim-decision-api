@@ -1331,10 +1331,17 @@ Return exactly one JSON object, nothing else. Example:
         # OPTIMIZATION: Skip translation since qwen2.5:14b handles Arabic natively
         # Translation is slow and unnecessary - model can process Arabic directly
         # Uncomment below if translation is needed for other models
-        USE_TRANSLATION = False  # Set to False for speed (qwen2.5:14b handles Arabic)
+        USE_TRANSLATION = True  # ENABLED for CO as requested
         
         if USE_TRANSLATION:
             print(f"  🔄 Translating claim data to English before sending to Ollama...")
+            # Ensure accident description is translated if it exists
+            if accident_info and isinstance(accident_info, dict):
+                # Translate specific fields
+                desc_key = "AccidentDescription" if "AccidentDescription" in accident_info else "Accident_description"
+                if desc_key in accident_info and accident_info[desc_key]:
+                    accident_info[desc_key] = self._translate_text_to_english(accident_info[desc_key])
+            
             accident_info_english = self._translate_claim_data_to_english(accident_info)
             party_info_english = self._translate_claim_data_to_english(party_info)
             all_parties_english = None
