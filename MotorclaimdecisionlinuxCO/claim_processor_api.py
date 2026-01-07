@@ -268,15 +268,21 @@ def process_co_claim(data):
         # Process OCR with CO OCR processor (use translated text if available)
         if ocr_text_translated or ocr_text:
             try:
+                # Store the final OCR text to be passed to the prompt
+                final_ocr_text = ocr_text_translated if ocr_text_translated else ocr_text
+                
                 data = co_ocr_license_processor.process_claim_data_with_ocr(
                     claim_data=data,
-                    ocr_text=ocr_text_translated if ocr_text_translated else ocr_text,
+                    ocr_text=final_ocr_text,
                     base64_image=ld_rep_base64 if not ocr_text else None
                 )
                 transaction_logger.info(f"CO_OCR_VALIDATION_SUCCESS | Case: {case_number}")
             except Exception as e:
                 transaction_logger.error(f"CO_OCR_VALIDATION_ERROR | Case: {case_number} | Error: {str(e)[:200]}")
-        
+                final_ocr_text = ocr_text_translated if ocr_text_translated else ocr_text # Fallback
+        else:
+            final_ocr_text = ""
+
         # Build accident info
         if accident_description:
             accident_desc = accident_description
@@ -293,7 +299,8 @@ def process_co_claim(data):
             "Name_LD_rep_64bit": ld_rep_base64,
             "isDAA": isDAA,
             "Suspect_as_Fraud": suspect_as_fraud,
-            "DaaReasonEnglish": daa_reason_english
+            "DaaReasonEnglish": daa_reason_english,
+            "ocr_text": final_ocr_text # Add OCR text to accident info for prompt inclusion
         }
         
         # Check if CO should only process Tawuniya parties

@@ -724,6 +724,11 @@ Translation (Arabic parts only, keep English unchanged, use LD report terminolog
         # Build comprehensive accident description from all available data
         accident_desc = accident_info.get("AccidentDescription", accident_info.get("Accident_description", ""))
         
+        # Add full OCR report text if available (this is the "Full Report" requested)
+        # Assuming OCR text might be passed in accident_info under a special key or separate argument
+        # For now, let's check if it's in accident_info
+        ocr_text_content = accident_info.get("ocr_text", "") or accident_info.get("full_report_text", "")
+        
         # Enhance accident description with additional context from request if available
         case_number = accident_info.get("caseNumber", accident_info.get("Case_Number", ""))
         accident_date_str = accident_info.get("callDate", accident_info.get("Accident_Date", ""))
@@ -734,6 +739,11 @@ Translation (Arabic parts only, keep English unchanged, use LD report terminolog
         description_parts = []
         if accident_desc:
             description_parts.append(accident_desc)
+        
+        # CRITICAL: Append full OCR text if available to allow "Full Report" analysis
+        if ocr_text_content:
+            description_parts.append(f"\n--- FULL OCR REPORT TEXT ---\n{ocr_text_content}\n----------------------------\n")
+            
         if case_number:
             description_parts.append(f"Case Number: {case_number}")
         if accident_date_str:
