@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 Excel + OCR License Expiry Date Processor
 Processes Excel sheets and extracts license expiry dates from OCR/images (Najm reports)
@@ -690,7 +689,6 @@ def main():
 if __name__ == "__main__":
     main()
 
-=======
 """
 Excel + OCR License Expiry Date Processor
 Processes Excel sheets and extracts license expiry dates from OCR/images (Najm reports)
@@ -1382,4 +1380,3 @@ def main():
 if __name__ == "__main__":
     main()
 
->>>>>>> 21fcbcc27f4d592ac48567ca74c7cbdd1496059f

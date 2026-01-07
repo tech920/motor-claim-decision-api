@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ========================================
 UPLOAD TO EMPTY FOLDERS
 ========================================
@@ -34,7 +33,6 @@ If empty, upload all 9 files from: D:\Motorclaimde\MotorclaimdecisionlinuxCO\
 TOTAL TO UPLOAD: 18 files (9 TP + 9 CO)
 ========================================
 
-=======
 ========================================
 UPLOAD TO EMPTY FOLDERS
 ========================================
@@ -70,4 +68,3 @@ If empty, upload all 9 files from: D:\Motorclaimde\MotorclaimdecisionlinuxCO\
 TOTAL TO UPLOAD: 18 files (9 TP + 9 CO)
 ========================================
 
->>>>>>> 21fcbcc27f4d592ac48567ca74c7cbdd1496059f

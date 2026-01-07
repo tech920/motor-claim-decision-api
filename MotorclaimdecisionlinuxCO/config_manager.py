@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 Configuration Manager for Prompts and Rules
 Stores and manages Ollama prompts and decision rules/controls
@@ -569,7 +568,6 @@ Provide only the English translation, no explanations."""
 # Global instance
 config_manager = ConfigManager()
 
-=======
 """
 Configuration Manager for Prompts and Rules
 Stores and manages Ollama prompts and decision rules/controls
@@ -1140,4 +1138,3 @@ Provide only the English translation, no explanations."""
 # Global instance
 config_manager = ConfigManager()
 
->>>>>>> 21fcbcc27f4d592ac48567ca74c7cbdd1496059f

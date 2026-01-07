@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 TP Claim Processing API Module
 All TP claim processing logic is contained in this module.
@@ -2255,7 +2254,6 @@ def process_tp_claim(data):
         )
         return jsonify({"error": error_msg}), 500
 
-=======
 """
 TP Claim Processing API Module
 All TP claim processing logic is contained in this module.
@@ -4512,4 +4510,3 @@ def process_tp_claim(data):
         )
         return jsonify({"error": error_msg}), 500
 
->>>>>>> 21fcbcc27f4d592ac48567ca74c7cbdd1496059f
