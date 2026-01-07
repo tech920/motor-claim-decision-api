@@ -1,0 +1,21 @@
+{
+    "users": {
+        "admin": {
+            "password": "Surety@2030",
+            "role": "admin",
+            "active": true
+        },
+        "surety": {
+            "password": "admin123",
+            "role": "api",
+            "active": true
+        },
+        "surety1": {
+            "password": "surety",
+            "role": "api",
+            "active": true
+        }
+    },
+    "notes": "Passwords are stored in plain text. For production, use hashed passwords."
+}
+

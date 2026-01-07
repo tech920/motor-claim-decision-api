@@ -1,0 +1,975 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-01-06T22:33:58.766701",
+  "processing_filters": {
+    "only_process_tawuniya": {
+      "enabled": true,
+      "description": "Only process parties insured with Tawuniya Cooperative Insurance Company. Skip all other parties.",
+      "insurance_name_match": "Tawuniya Cooperative Insurance Company",
+      "insurance_name_match_arabic": "التعاونية للتأمين"
+    }
+  },
+  "prompts": {
+    "main_prompt": "This prompt implements Tawuniya 29 deterministic rejection checks and the mandatory accepted->accepted_with_subrogation upgrade. Use EXACT detection mapping provided in rules_29_detection_mapping.json.",
+    "compact_prompt_template": "Analyze Party {party_index} for a Tawuniya (The Cooperative) insurance claim decision.\n\nDATA (JSON):\n{data}\n\nINSTRUCTIONS (deterministic, use ONLY fields in the JSON):\n\n1) Tawuniya identification (Rule #2 check - CHECK FLAGS FIRST):\n   - FIRST: Check `data.is_insured_with_cooperative` in the JSON above\n     * If `data.is_insured_with_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2\n   - SECOND: If `data.is_insured_with_cooperative` is false/missing, check `data.is_cooperative`\n     * If `data.is_cooperative == true` → Party IS Tawuniya → Rule #2 DOES NOT APPLY → SKIP Rule #2\n   - THIRD: Only if BOTH flags are false/missing, THEN check `party.insurance` field\n     * If `party.insurance` contains (case-insensitive): 'tawuniya', 'tawuniya cooperative insurance company', 'the cooperative insurance company', 'التعاونية للتأمين' → Party IS Tawuniya → Rule #2 DOES NOT APPLY\n     * If NOT found → Rule #2 APPLIES (REJECTED)\n   - 🔴 CRITICAL: If `data.is_insured_with_cooperative == true` OR `data.is_cooperative == true`, you MUST treat Party as Tawuniya. Do NOT check `party.insurance` if flags are true.\n\n2) Insurance type normalization (Rule #1 check - CHECK FLAG FIRST):\n   - FIRST: Check `data.is_comprehensive` in the JSON above\n     * If `data.is_comprehensive == true` → Insurance IS comprehensive → Rule #1 DOES NOT APPLY → SKIP Rule #1\n   - SECOND: Only if flag is false/missing, THEN normalize `party.insurance_type` (trim + lowercase)\n     * Treat these normalized values as COMPREHENSIVE: ['comprehensive', 'شامل', 'co', 'comp']\n     * If `party.insurance_type` is missing/empty → assume comprehensive → Rule #1 DOES NOT APPLY\n     * If `party.insurance_type` is present and NOT one of accepted values → Rule #1 APPLIES (REJECTED)\n   - 🔴 CRITICAL: If `data.is_comprehensive == true`, you MUST NOT reject for Rule #1. The flag is authoritative.\n\n3) Rejection rules (1..29): Evaluate deterministically using only available JSON fields. For each rule, check if detection condition matches. Collect ALL matching rule ids (as strings). Rules:\n   1. insurance_type explicitly present and NOT comprehensive (check Rule #1 logic above first)\n   2. party is NOT insured with Tawuniya (check Rule #2 logic above first)\n   3. license invalid/suspended/expired and not renewed within 50 days\n   4. wrong direction driving (check party.wrong_direction_flag OR accident_description for keywords: عكس السير, سير في الاتجاه المعاكس)\n   5. running a red light (check party.red_light_flag OR accident_description for keywords: اشارة حمراء, تجاوز الإشارة, إشارة حمراء)\n   6. repairs without Tawuniya approval (check party.repair_without_approval_flag)\n   7. driver not owner and not relative and not sponsored (check party.sponsorship_flag and name token matching)\n   8. manufacturing defect or mechanical fault (check party.manufacturing_defect_flag OR accident_description for mechanical failure)\n   9. overloading/excessive strain (check party.overloading_flag OR accident_description for overload)\n   10. damage limited to tires/rims/hubcaps/mirrors unless lost at collision (check party.damage_parts and lost_at_collision flag)\n   11. damage to goods/personal belongings (check party.goods_damage_flag)\n   12. damage to trailer (check party.trailer_flag)\n   13. theft where vehicle left running/unlocked (check party.theft_left_running_flag)\n   14. sandstorm damage (check party.sandstorm_flag OR accident_description for keywords: عاصفة رملية, عواصف رملية)\n   15. policy usage violation (check party.policy_usage_violation_flag)\n   16. excess passengers or cargo (check party.excess_passengers_flag)\n   17. races or speed tests (check party.race_flag OR accident_description for keywords: سباق, اختبار سرعة, تجارب سرعة)\n   18. driving under influence (check party.dui_flag)\n   19. use in prohibited public areas (check party.prohibited_area_flag OR accident_description for airports/ports)\n   20. operating as work machine excluded (check party.work_machine_flag)\n   21. stunt driving/drifting or red light or wrong direction exclusions (check party.stunt_flag OR accident_description for stunt/red_light/wrong_direction keywords)\n   22. criminal/hostile acts by driver (check party.criminal_act_flag)\n   23. driver intentionally exposed vehicle to danger (check party.intentional_exposure_flag)\n   24. driving in deserts/unpaved roads excluded (check party.desert_driving_flag OR accident_description for keywords: صحراء, طرق غير معبدة, طرق ترابية)\n   25. failure to comply with traffic regulations (check party.traffic_violation_flag OR accident_description for violations)\n   26. use conflicting with Kingdom laws/regulations (check party.legal_conflict_flag)\n   27. accident > 90 days before Upload_Date/current date (compare dates: if (Upload_Date - Accident_Date) > 90 days OR (current_date - Accident_Date) > 90 days)\n   28. fraud suspected/identified (check Suspect_as_Fraud == true OR party.fraud_flag)\n   29. vehicle owner mismatch (check if VehicleOwnerId != Policyholder_ID OR owner name token mismatch)\n   - If ANY rule matches => decision = 'REJECTED' and applied_conditions = list of matched rule ids (as strings like [\"2\", \"3\"])\n\n4) Decision post-processing (UNAMBIGUOUS and MANDATORY):\n   - If applied_conditions non-empty => decision remains 'REJECTED'.\n   - If applied_conditions empty => decision = 'ACCEPTED'.\n   - Immediately after that: if decision == 'ACCEPTED' AND `data.liability` < 100 => MANDATORILY set decision = 'ACCEPTED_WITH_SUBROGATION'. This step is mandatory and must be applied before returning output.\n   - 🔴 CRITICAL: Use `data.liability` (NOT party.Liability) to check liability percentage. The liability value is at the top level of the data JSON.\n\n5) Output JSON (exactly this object, nothing else):\n{{\n  \"decision\": \"REJECTED | ACCEPTED | ACCEPTED_WITH_SUBROGATION | SKIPPED\",\n  \"reasoning\": \"Very brief reason in English (use only JSON fields)\",\n  \"classification\": \"Short label or rules used (e.g., 'Rejected - Rule 1' or 'Accepted with subrogation')\",\n  \"applied_conditions\": [\"1\", \"3\", ... ]\n}}\n\nIMPORTANT: Do NOT include any other text. If a required field for a rule is missing, do NOT apply that rule. Do not infer. Mandatory upgrade to ACCEPTED_WITH_SUBROGATION when `data.liability` < 100 must be applied here.",
+    "translation_prompt": "You are a professional translator specializing in motor vehicle accident reports and insurance claims (LD reports).\n\nTranslate the following Arabic text to English. Maintain technical terms and insurance terminology accurately.\n\nArabic Text:\n{text}\n\nProvide only the English translation, no explanations.",
+    "accepted_comprehensive_values": [
+      "comprehensive",
+      "شامل",
+      "co",
+      "comp"
+    ],
+    "tawuniya_name_variants": [
+      "tawuniya",
+      "cooperative insurance company",
+      "the cooperative insurance company",
+      "التعاونية للتأمي��"
+    ],
+    "arabic_keywords": {
+      "desert_driving": [
+        "صحراء",
+        "طرق غير معبدة",
+        "طرق ترابية"
+      ],
+      "fleeing": [
+        "هرب",
+        "ترك مكان الحادث",
+        "الفرار من موقع الحادث"
+      ],
+      "race": [
+        "سباق",
+        "اختبار سرعة",
+        "تجارب سرعة"
+      ],
+      "red_light": [
+        "اشارة حمراء",
+        "تجاوز الإشارة",
+        "إشارة حمراء"
+      ],
+      "sandstorm": [
+        "عاصفة رملية",
+        "عواصف رملية"
+      ],
+      "stunt": [
+        "تفحيط",
+        "دريفت",
+        "مناورات خطرة"
+      ],
+      "wrong_direction": [
+        "عكس السير",
+        "سير في الاتجاه المعاكس"
+      ]
+    },
+    "rejection_rules": [
+      {
+        "detection_fields": [
+          "party.insurance_type"
+        ],
+        "detection_logic": "Normalize party.insurance_type; if non-empty and not in accepted_comprehensive_values -> match",
+        "id": "1",
+        "short_description": "insurance_type explicitly present and NOT comprehensive"
+      },
+      {
+        "detection_fields": [
+          "party.is_insured_with_cooperative",
+          "party.is_cooperative",
+          "party.Insurance_Name"
+        ],
+        "detection_logic": "If none of Tawuniya identification checks true -> match",
+        "id": "2",
+        "short_description": "party not insured with Tawuniya"
+      },
+      {
+        "detection_fields": [
+          "party.License_Type_From_Najm",
+          "party.License_Expiry_Date",
+          "party.License_Renewal_Date",
+          "Accident_Date"
+        ],
+        "detection_logic": "If License_Expiry_Date < Accident_Date and (License_Renewal_Date missing or License_Renewal_Date > Accident_Date + 50 days) -> match. Also if explicit field 'license_invalid' true -> match.",
+        "id": "3",
+        "short_description": "license invalid/suspended/expired and not renewed within 50 days"
+      },
+      {
+        "detection_fields": [
+          "accident_description",
+          "party.wrong_direction_flag"
+        ],
+        "detection_logic": "If party.wrong_direction_flag true OR accident_description contains any arabic_keywords.wrong_direction -> match",
+        "id": "4",
+        "short_description": "wrong direction driving"
+      },
+      {
+        "detection_fields": [
+          "accident_description",
+          "party.red_light_flag"
+        ],
+        "detection_logic": "If party.red_light_flag true OR accident_description contains any arabic_keywords.red_light -> match",
+        "id": "5",
+        "short_description": "running red light"
+      },
+      {
+        "detection_fields": [
+          "party.repair_without_approval_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "6",
+        "short_description": "repair without Tawuniya approval"
+      },
+      {
+        "detection_fields": [
+          "party.Party_Name",
+          "party.Policyholdername",
+          "party.sponsorship_flag"
+        ],
+        "detection_logic": "If sponsorship_flag false/missing AND driver name tokens do not match owner name tokens (compare second/last names where available) -> match",
+        "id": "7",
+        "short_description": "driver not owner, not relative, not sponsored"
+      },
+      {
+        "detection_fields": [
+          "party.manufacturing_defect_flag",
+          "accident_description"
+        ],
+        "detection_logic": "If explicit flag true or description indicates mechanical failure -> match",
+        "id": "8",
+        "short_description": "manufacturing defect or mechanical fault"
+      },
+      {
+        "detection_fields": [
+          "party.overloading_flag",
+          "accident_description"
+        ],
+        "detection_logic": "If explicit flag true or description indicates overload -> match",
+        "id": "9",
+        "short_description": "overloading/excessive strain"
+      },
+      {
+        "detection_fields": [
+          "party.damage_parts",
+          "accident_description"
+        ],
+        "detection_logic": "If damage limited to those parts and not lost at collision -> match",
+        "id": "10",
+        "short_description": "tires/rims/hubcaps/mirrors only"
+      },
+      {
+        "detection_fields": [
+          "party.goods_damage_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "11",
+        "short_description": "damage to goods/personal belongings"
+      },
+      {
+        "detection_fields": [
+          "party.trailer_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "12",
+        "short_description": "damage to a trailer"
+      },
+      {
+        "detection_fields": [
+          "party.theft_left_running_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "13",
+        "short_description": "theft where vehicle left running/unlocked"
+      },
+      {
+        "detection_fields": [
+          "party.sandstorm_flag",
+          "accident_description"
+        ],
+        "detection_logic": "If sandstorm_flag true OR accident_description contains any arabic_keywords.sandstorm -> match",
+        "id": "14",
+        "short_description": "sandstorm damage"
+      },
+      {
+        "detection_fields": [
+          "party.policy_usage_violation_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "15",
+        "short_description": "use contrary to policy usage restrictions"
+      },
+      {
+        "detection_fields": [
+          "party.excess_passengers_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "16",
+        "short_description": "excess passengers/cargo"
+      },
+      {
+        "detection_fields": [
+          "party.race_flag",
+          "accident_description"
+        ],
+        "detection_logic": "If race_flag true OR description contains any arabic_keywords.race -> match",
+        "id": "17",
+        "short_description": "vehicle used in races/speed tests"
+      },
+      {
+        "detection_fields": [
+          "party.dui_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "18",
+        "short_description": "driving under influence"
+      },
+      {
+        "detection_fields": [
+          "party.prohibited_area_flag",
+          "accident_description"
+        ],
+        "detection_logic": "If prohibited_area_flag true OR description indicates airports/ports -> match",
+        "id": "19",
+        "short_description": "use in areas prohibited to public"
+      },
+      {
+        "detection_fields": [
+          "party.work_machine_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "20",
+        "short_description": "operating as a work machine excluded"
+      },
+      {
+        "detection_fields": [
+          "party.stunt_flag",
+          "accident_description"
+        ],
+        "detection_logic": "If stunt_flag true OR description matches stunt/red_light/wrong_direction keywords -> match",
+        "id": "21",
+        "short_description": "stunt driving/drifting or red light or wrong direction exclusions"
+      },
+      {
+        "detection_fields": [
+          "party.criminal_act_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "22",
+        "short_description": "criminal or hostile acts by driver"
+      },
+      {
+        "detection_fields": [
+          "party.intentional_exposure_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "23",
+        "short_description": "driver intentionally exposed vehicle to danger"
+      },
+      {
+        "detection_fields": [
+          "party.desert_driving_flag",
+          "accident_description"
+        ],
+        "detection_logic": "If desert_driving_flag true OR description contains arabic_keywords.desert_driving -> match",
+        "id": "24",
+        "short_description": "driving in deserts/unpaved roads outside city excluded"
+      },
+      {
+        "detection_fields": [
+          "party.traffic_violation_flag",
+          "accident_description"
+        ],
+        "detection_logic": "If explicit flag true or description indicates violations -> match",
+        "id": "25",
+        "short_description": "failure to comply with traffic regulations"
+      },
+      {
+        "detection_fields": [
+          "party.legal_conflict_flag"
+        ],
+        "detection_logic": "If explicit flag true -> match",
+        "id": "26",
+        "short_description": "use conflicting with Kingdom laws/regulations"
+      },
+      {
+        "detection_fields": [
+          "Accident_Date",
+          "Upload_Date"
+        ],
+        "detection_logic": "If Upload_Date present and (Upload_Date - Accident_Date) > 90 days OR if Upload_Date missing and (current_date - Accident_Date) > 90 days -> match",
+        "id": "27",
+        "short_description": "accident > 90 days before Upload_Date/current date"
+      },
+      {
+        "detection_fields": [
+          "Suspect_as_Fraud",
+          "party.fraud_flag"
+        ],
+        "detection_logic": "If Suspect_as_Fraud == true OR party.fraud_flag true -> match",
+        "id": "28",
+        "short_description": "fraud suspected/identified"
+      },
+      {
+        "detection_fields": [
+          "party.VehicleOwnerId",
+          "party.Policyholder_ID",
+          "party.Policyholdername"
+        ],
+        "detection_logic": "If VehicleOwnerId != Policyholder_ID OR owner name tokens mismatch -> match",
+        "id": "29",
+        "short_description": "vehicle owner mismatch (insured owner differs from report)"
+      }
+    ],
+    "decision_post_processing": {
+      "if_accepted_and_liability_lt_100_then": "ACCEPTED_WITH_SUBROGATION",
+      "if_no_rejection_then": "ACCEPTED",
+      "note": "Do not perform any inference. If a check cannot be performed because a field is missing, do not apply that rule."
+    }
+  },
+  "rules": {
+    "basic_rules": {
+      "rule_1_100_percent_liability": {
+        "enabled": true,
+        "description": "If party.Liability == 100% -> REJECTED (highest priority).",
+        "applies_to": "all_companies",
+        "id": "BR1",
+        "note": "This is an overriding top-level rule. Evaluate first."
+      },
+      "rule_2_non_cooperative_0_25_50_75": {
+        "enabled": true,
+        "description": "If non-cooperative + liability in [0,25,50,75]% → ACCEPTED (unless rejection condition applies)",
+        "applies_to": "non_tawuniya"
+      },
+      "rule_3_cooperative_responsible_party_not_cooperative": {
+        "enabled": true,
+        "description": "If cooperative + liability<100% + responsible party (100%) not cooperative → REJECTED",
+        "applies_to": "tawuniya"
+      },
+      "rule_4_cooperative_responsible_party_cooperative": {
+        "enabled": true,
+        "description": "If cooperative + liability<100% + responsible party (100%) cooperative → ACCEPTED",
+        "applies_to": "tawuniya"
+      },
+      "rule_5_zero_liability_non_cooperative": {
+        "enabled": true,
+        "description": "If liability=0% + non-cooperative → ACCEPTED",
+        "applies_to": "non_tawuniya"
+      },
+      "rule_6_zero_liability_cooperative_responsible_not_cooperative": {
+        "enabled": true,
+        "description": "If liability=0% + cooperative + responsible party not cooperative → REJECTED",
+        "applies_to": "tawuniya"
+      }
+    },
+    "rejection_conditions": {
+      "condition_2_tawuniya_sum_zero": {
+        "enabled": true,
+        "description": "Sum liability for Tawuniya parties = 0"
+      },
+      "condition_3_damaged_vehicle_owned_by_at_fault": {
+        "enabled": true,
+        "description": "Damaged vehicle owned by at-fault party"
+      },
+      "condition_4_property_of_insured": {
+        "enabled": true,
+        "description": "Property of insured/under management"
+      },
+      "condition_5_death_of_insured_driver": {
+        "enabled": true,
+        "description": "Death of insured/driver"
+      },
+      "condition_6_racing_testing": {
+        "enabled": true,
+        "description": "Racing/testing"
+      },
+      "condition_7_prohibited_area": {
+        "enabled": true,
+        "description": "Prohibited area"
+      },
+      "condition_8_intentional_damage": {
+        "enabled": true,
+        "description": "Intentional damage"
+      },
+      "condition_9_collusion_staged": {
+        "enabled": true,
+        "description": "Collusion/staged"
+      },
+      "condition_10_intentional_accident": {
+        "enabled": true,
+        "description": "Intentional accident"
+      },
+      "condition_11_fleeing_scene": {
+        "enabled": true,
+        "description": "Fleeing scene"
+      },
+      "condition_12_reckless_driving": {
+        "enabled": true,
+        "description": "Reckless driving"
+      },
+      "condition_13_drugs_alcohol": {
+        "enabled": true,
+        "description": "Drugs/alcohol"
+      },
+      "condition_14_natural_disasters": {
+        "enabled": true,
+        "description": "Natural disasters"
+      },
+      "condition_15_failure_to_notify": {
+        "enabled": true,
+        "description": "Failure to notify"
+      },
+      "condition_16_more_than_5_years": {
+        "enabled": true,
+        "description": "More than 5 years passed"
+      },
+      "condition_17_fraud": {
+        "enabled": true,
+        "description": "Fraud exists"
+      }
+    },
+    "recovery_conditions": {
+      "condition_1_wrong_way_driving": {
+        "enabled": true,
+        "description": "Wrong-way driving"
+      },
+      "condition_2_red_light_violation": {
+        "enabled": true,
+        "description": "Red light violation"
+      },
+      "condition_3_exceeding_capacity": {
+        "enabled": true,
+        "description": "Exceeding capacity"
+      },
+      "condition_4_stolen_vehicle": {
+        "enabled": true,
+        "description": "Stolen vehicle"
+      },
+      "condition_5_license_expired": {
+        "enabled": true,
+        "description": "License_Expiry_Date < Accident_Date"
+      },
+      "condition_6_license_type_mismatch": {
+        "enabled": true,
+        "description": "License type mismatch"
+      }
+    },
+    "metadata": {
+      "note": "Deterministic detection hints for each rejection rule. Use only provided JSON fields; do not infer.",
+      "name": "Tawuniya 29-rule detection mapping",
+      "version": "2026-01-06",
+      "description": "Deterministic implementation of the business 29 rejection rules for Tawuniya (The Cooperative). If none of the 29 rejection rules applies then the claim is ACCEPTED. If accepted and Liability < 100% then the claim is ACCEPTED_WITH_SUBROGATION. Always use only fields present in the JSON input; do not infer facts."
+    },
+    "accepted_comprehensive_values": [
+      "comprehensive",
+      "شامل",
+      "co",
+      "comp"
+    ],
+    "tawuniya_name_variants": [
+      "tawuniya",
+      "tawuniya cooperative insurance company",
+      "the cooperative insurance company",
+      "التعاونية للتأمين"
+    ],
+    "rejection_rules_1_to_29": [
+      {
+        "id": "1",
+        "description": "If party.insurance_type is explicitly present and is NOT comprehensive (not in accepted_comprehensive_values). If insurance_type is empty or missing, assume comprehensive (do NOT trigger).",
+        "enabled": true,
+        "detection_fields": [
+          "party.insurance_type"
+        ]
+      },
+      {
+        "id": "2",
+        "description": "If the PARTY is NOT insured with The Cooperative Insurance Company (Tawuniya).",
+        "enabled": true,
+        "detection_fields": [
+          "party.is_insured_with_cooperative",
+          "party.is_cooperative",
+          "party.Insurance_Name"
+        ],
+        "detection_hint": "If none of the tawuniya_name_variants present and boolean flags false/missing -> matches."
+      },
+      {
+        "id": "3",
+        "description": "Vehicle driven without valid license for the vehicle type, or license suspended, or License_Expiry_Date < Accident_Date and not renewed within 50 days from Accident_Date.",
+        "enabled": true,
+        "detection_fields": [
+          "party.License_Type_From_Najm",
+          "party.License_Expiry_Date",
+          "party.License_Renewal_Date",
+          "Accident_Date"
+        ]
+      },
+      {
+        "id": "4",
+        "description": "Driving in the wrong direction (against traffic).",
+        "enabled": true,
+        "detection_fields": [
+          "party.wrong_direction_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "5",
+        "description": "Running a red light.",
+        "enabled": true,
+        "detection_fields": [
+          "party.red_light_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "6",
+        "description": "Repairing the vehicle without obtaining prior approval from The Cooperative Insurance Company.",
+        "enabled": true,
+        "detection_fields": [
+          "party.repair_without_approval_flag"
+        ]
+      },
+      {
+        "id": "7",
+        "description": "Driver does not own the vehicle and is not a relative (father, mother, son, daughter, brother, sister) and not under sponsorship of the vehicle owner.",
+        "enabled": true,
+        "detection_fields": [
+          "party.Party_Name",
+          "party.Policyholdername",
+          "party.sponsorship_flag"
+        ],
+        "detection_hint": "Use token matching on second/last names when available; if insufficient data do not apply."
+      },
+      {
+        "id": "8",
+        "description": "Accident caused by manufacturing defects in the vehicle or mechanical/electrical faults.",
+        "enabled": true,
+        "detection_fields": [
+          "party.manufacturing_defect_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "9",
+        "description": "Damage resulted from overloading or excessive strain.",
+        "enabled": true,
+        "detection_fields": [
+          "party.overloading_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "10",
+        "description": "Damage, loss, or theft limited to tires, rims, hubcaps, or external mirrors, unless they were lost at the time of the accident.",
+        "enabled": true,
+        "detection_fields": [
+          "party.damage_parts",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "11",
+        "description": "Losses or damages to goods or personal belongings during transportation or loading/unloading (not covered).",
+        "enabled": true,
+        "detection_fields": [
+          "party.goods_damage_flag"
+        ]
+      },
+      {
+        "id": "12",
+        "description": "Damage to a trailer is not covered.",
+        "enabled": true,
+        "detection_fields": [
+          "party.trailer_flag"
+        ]
+      },
+      {
+        "id": "13",
+        "description": "The policy does not cover theft/attempted theft if the vehicle was left running or unlocked.",
+        "enabled": true,
+        "detection_fields": [
+          "party.theft_left_running_flag"
+        ]
+      },
+      {
+        "id": "14",
+        "description": "Damages from sandstorms are not covered.",
+        "enabled": true,
+        "detection_fields": [
+          "party.sandstorm_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "15",
+        "description": "Usage in violation of the usage restrictions stated in the policy.",
+        "enabled": true,
+        "detection_fields": [
+          "party.policy_usage_violation_flag"
+        ]
+      },
+      {
+        "id": "16",
+        "description": "Increase in the number of passengers or cargo beyond the permitted amount voids compensation.",
+        "enabled": true,
+        "detection_fields": [
+          "party.excess_passengers_flag"
+        ]
+      },
+      {
+        "id": "17",
+        "description": "Using the vehicle in races or speed tests is not covered.",
+        "enabled": true,
+        "detection_fields": [
+          "party.race_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "18",
+        "description": "No coverage when driving under the influence of drugs, alcohol, or medication that prohibits driving.",
+        "enabled": true,
+        "detection_fields": [
+          "party.dui_flag"
+        ]
+      },
+      {
+        "id": "19",
+        "description": "Use in areas prohibited to the public (airports, ports) is not covered.",
+        "enabled": true,
+        "detection_fields": [
+          "party.prohibited_area_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "20",
+        "description": "Operating the vehicle as a work machine is excluded from coverage.",
+        "enabled": true,
+        "detection_fields": [
+          "party.work_machine_flag"
+        ]
+      },
+      {
+        "id": "21",
+        "description": "Accidents resulting from stunt driving (drifting), running a red light, or driving in the wrong direction are not covered.",
+        "enabled": true,
+        "detection_fields": [
+          "party.stunt_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "22",
+        "description": "Criminal or hostile acts by the driver nullify liability or expenses.",
+        "enabled": true,
+        "detection_fields": [
+          "party.criminal_act_flag"
+        ]
+      },
+      {
+        "id": "23",
+        "description": "Driver intentionally exposing the vehicle to danger voids coverage.",
+        "enabled": true,
+        "detection_fields": [
+          "party.intentional_exposure_flag"
+        ]
+      },
+      {
+        "id": "24",
+        "description": "Driving the vehicle in deserts or unpaved roads outside the city is not covered.",
+        "enabled": true,
+        "detection_fields": [
+          "party.desert_driving_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "25",
+        "description": "Failure to comply with traffic regulations and instructions voids coverage.",
+        "enabled": true,
+        "detection_fields": [
+          "party.traffic_violation_flag",
+          "accident_description"
+        ]
+      },
+      {
+        "id": "26",
+        "description": "If the vehicle was used in activities that conflict with the laws and regulations in force in the Kingdom.",
+        "enabled": true,
+        "detection_fields": [
+          "party.legal_conflict_flag"
+        ]
+      },
+      {
+        "id": "27",
+        "description": "If the accident occurred more than 90 days before Upload_Date (or current date if Upload_Date missing).",
+        "enabled": true,
+        "detection_fields": [
+          "Accident_Date",
+          "Upload_Date"
+        ]
+      },
+      {
+        "id": "28",
+        "description": "In case of fraud by the parties involved in the accident.",
+        "enabled": true,
+        "detection_fields": [
+          "Suspect_as_Fraud",
+          "party.fraud_flag"
+        ]
+      },
+      {
+        "id": "29",
+        "description": "If the owner of the vehicle insured with The Cooperative differs from the one stated in the report (VehicleOwnerId vs Policyholder_ID or owner name mismatch).",
+        "enabled": true,
+        "detection_fields": [
+          "party.VehicleOwnerId",
+          "party.Policyholder_ID",
+          "party.Policyholdername"
+        ]
+      }
+    ],
+    "decision_logic": {
+      "evaluation_order": [
+        "BR1 (liability==100) - if true -> REJECTED",
+        "Then evaluate rules 1..29 deterministically and collect all matches",
+        "If any rule 1..29 matched -> REJECTED",
+        "Else -> ACCEPTED",
+        "If ACCEPTED AND party.Liability < 100 -> change to ACCEPTED_WITH_SUBROGATION"
+      ],
+      "post_decision_outputs": {
+        "REJECTED": "Return decision=REJECTED and applied_conditions = list of matching rule numbers (as strings). classification should include 'Rejected - rules [...]' and a brief reasoning (English).",
+        "ACCEPTED": "Return decision=ACCEPTED and applied_conditions = []. If Liability < 100 -> decision should be ACCEPTED_WITH_SUBROGATION."
+      },
+      "output_fields": [
+        "party_index",
+        "party_id",
+        "decision",
+        "reasoning",
+        "classification",
+        "applied_conditions (array of strings, e.g., [\"1\",\"3\"])",
+        "tawuniya_identified (true|false)"
+      ]
+    },
+    "implementation_notes": {
+      "deterministic_only": "All checks must use only provided JSON fields. If a required field for a rule is missing, that rule cannot be applied (do not infer).",
+      "date_handling": "Use Accident_Date and Upload_Date for date arithmetic. If Upload_Date missing, use current date provided at runtime.",
+      "string_matching": "Use case-insensitive substring matching for Insurance_Name against tawuniya_name_variants.",
+      "insurance_type_handling": "Normalize party.insurance_type using accepted_comprehensive_values; empty/missing => treat as comprehensive.",
+      "relative_detection": "For rule 7 use second and last name tokens to identify relatives; if tokens missing, do not apply rule deterministically."
+    },
+    "arabic_keywords": {
+      "wrong_direction": [
+        "عكس السير",
+        "سير في الاتجاه المعاكس"
+      ],
+      "red_light": [
+        "اشارة حمراء",
+        "تجاوز الإشارة",
+        "إشارة حمراء"
+      ],
+      "sandstorm": [
+        "عاصفة رملية",
+        "عواصف رملية"
+      ],
+      "race": [
+        "سباق",
+        "اختبار سرعة",
+        "تجارب سرعة"
+      ],
+      "stunt": [
+        "تفحيط",
+        "دريفت",
+        "مناورات خطرة"
+      ],
+      "desert_driving": [
+        "صحراء",
+        "طرق غير معبدة",
+        "طرق ترابية"
+      ]
+    },
+    "rejection_rules": [
+      {
+        "id": "1",
+        "description": "insurance_type explicitly present and NOT comprehensive",
+        "detection": "normalize party.insurance_type; if non-empty and not in accepted_comprehensive_values -> match"
+      },
+      {
+        "id": "2",
+        "description": "party is NOT insured with Tawuniya",
+        "detection": "if none of tawuniya booleans true AND Insurance_Name does not contain any tawuniya_name_variants -> match"
+      },
+      {
+        "id": "3",
+        "description": "license invalid/suspended/expired and not renewed within 50 days",
+        "detection": "if License_Expiry_Date < Accident_Date and (License_Renewal_Date missing or License_Renewal_Date > Accident_Date + 50 days) OR explicit license_invalid flag true -> match"
+      },
+      {
+        "id": "4",
+        "description": "wrong direction driving",
+        "detection": "party.wrong_direction_flag true OR accident_description contains any arabic_keywords.wrong_direction -> match"
+      },
+      {
+        "id": "5",
+        "description": "running a red light",
+        "detection": "party.red_light_flag true OR accident_description contains any arabic_keywords.red_light -> match"
+      },
+      {
+        "id": "6",
+        "description": "repairs without Tawuniya approval",
+        "detection": "party.repair_without_approval_flag true -> match"
+      },
+      {
+        "id": "7",
+        "description": "driver not owner and not relative and not sponsored",
+        "detection": "if sponsorship_flag false/missing AND driver second/last name tokens do not match owner name tokens -> match (if insufficient name tokens do NOT apply)"
+      },
+      {
+        "id": "8",
+        "description": "manufacturing defect or mechanical fault",
+        "detection": "party.manufacturing_defect_flag true OR accident_description indicates mechanical failure -> match"
+      },
+      {
+        "id": "9",
+        "description": "overloading/excessive strain",
+        "detection": "party.overloading_flag true OR accident_description indicates overload -> match"
+      },
+      {
+        "id": "10",
+        "description": "damage limited to tires/rims/hubcaps/mirrors (unless lost at collision)",
+        "detection": "party.damage_parts indicates only these parts AND not lost_at_collision -> match"
+      },
+      {
+        "id": "11",
+        "description": "damage to goods/personal belongings",
+        "detection": "party.goods_damage_flag true -> match"
+      },
+      {
+        "id": "12",
+        "description": "damage to trailer",
+        "detection": "party.trailer_flag true -> match"
+      },
+      {
+        "id": "13",
+        "description": "theft where vehicle left running/unlocked",
+        "detection": "party.theft_left_running_flag true -> match"
+      },
+      {
+        "id": "14",
+        "description": "sandstorm damage",
+        "detection": "party.sandstorm_flag true OR accident_description contains any arabic_keywords.sandstorm -> match"
+      },
+      {
+        "id": "15",
+        "description": "policy usage violation",
+        "detection": "party.policy_usage_violation_flag true -> match"
+      },
+      {
+        "id": "16",
+        "description": "excess passengers or cargo",
+        "detection": "party.excess_passengers_flag true -> match"
+      },
+      {
+        "id": "17",
+        "description": "races or speed tests",
+        "detection": "party.race_flag true OR accident_description contains any arabic_keywords.race -> match"
+      },
+      {
+        "id": "18",
+        "description": "driving under influence",
+        "detection": "party.dui_flag true -> match"
+      },
+      {
+        "id": "19",
+        "description": "use in prohibited public areas",
+        "detection": "party.prohibited_area_flag true OR accident_description indicates airports/ports -> match"
+      },
+      {
+        "id": "20",
+        "description": "operating as work machine excluded",
+        "detection": "party.work_machine_flag true -> match"
+      },
+      {
+        "id": "21",
+        "description": "stunt driving/drifting or red light or wrong direction exclusions",
+        "detection": "party.stunt_flag true OR accident_description contains any stunt/red_light/wrong_direction keywords -> match"
+      },
+      {
+        "id": "22",
+        "description": "criminal/hostile acts by driver",
+        "detection": "party.criminal_act_flag true -> match"
+      },
+      {
+        "id": "23",
+        "description": "driver intentionally exposed vehicle to danger",
+        "detection": "party.intentional_exposure_flag true -> match"
+      },
+      {
+        "id": "24",
+        "description": "driving in deserts/unpaved roads excluded",
+        "detection": "party.desert_driving_flag true OR accident_description contains any arabic_keywords.desert_driving -> match"
+      },
+      {
+        "id": "25",
+        "description": "failure to comply with traffic regulations",
+        "detection": "party.traffic_violation_flag true OR accident_description indicates violations -> match"
+      },
+      {
+        "id": "26",
+        "description": "use conflicting with Kingdom laws/regulations",
+        "detection": "party.legal_conflict_flag true -> match"
+      },
+      {
+        "id": "27",
+        "description": "accident > 90 days before Upload_Date/current date",
+        "detection": "if Upload_Date present and (Upload_Date - Accident_Date) > 90 days OR if missing and (current_date - Accident_Date) > 90 days -> match"
+      },
+      {
+        "id": "28",
+        "description": "fraud suspected/identified",
+        "detection": "Suspect_as_Fraud == true OR party.fraud_flag true -> match"
+      },
+      {
+        "id": "29",
+        "description": "vehicle owner mismatch (VehicleOwnerId != Policyholder_ID or owner name mismatch)",
+        "detection": "VehicleOwnerId != Policyholder_ID OR owner name token mismatch -> match"
+      }
+    ],
+    "post_rules": {
+      "if_any_rejection_matched": "decision = REJECTED; applied_conditions = list of matched rule ids as strings",
+      "if_no_rejection_matched": "decision = ACCEPTED; then MANDATORY upgrade: if data.liability < 100 -> decision = ACCEPTED_WITH_SUBROGATION"
+    }
+  },
+  "response_fields": {
+    "enabled_fields": {
+      "Party": true,
+      "Party_ID": true,
+      "Party_Name": true,
+      "Liability": true,
+      "Decision": true,
+      "Classification": true,
+      "Reasoning": true,
+      "Applied_Conditions": true,
+      "isDAA": true,
+      "Suspect_as_Fraud": true,
+      "DaaReasonEnglish": true,
+      "Suspected_Fraud": true,
+      "model_recovery": true,
+      "License_Type_From_Make_Model": true,
+      "Policyholder_ID": true
+    },
+    "description": {
+      "Party": "Party identifier",
+      "Party_ID": "Party ID from request",
+      "Party_Name": "Party name from request",
+      "Liability": "Liability percentage",
+      "Decision": "Decision (ACCEPTED/REJECTED/ACCEPTED_WITH_RECOVERY)",
+      "Classification": "Rule/condition used for decision",
+      "Reasoning": "Brief explanation in English",
+      "Applied_Conditions": "List of condition numbers that applied",
+      "isDAA": "DAA flag from request",
+      "Suspect_as_Fraud": "Suspect as fraud flag from request",
+      "DaaReasonEnglish": "DAA reason in English from request",
+      "Suspected_Fraud": "Suspected fraud flag (calculated: 'Suspected Fraud' if isDAA=TRUE, else null)",
+      "model_recovery": "Model recovery flag (calculated based on license type mismatch)",
+      "License_Type_From_Make_Model": "License type from make/model lookup",
+      "Policyholder_ID": "Policyholder ID from request"
+    }
+  }
+}

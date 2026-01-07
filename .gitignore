@@ -1,0 +1,80 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+venv/
+env/
+ENV/
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*~
+~$*
+
+# Excel/Office temp files
+~$*.xlsx
+~$*.docx
+
+# Config backups
+claim_config*.json.backup
+*.json.backup
+
+# Test files
+test_*.py
+*_test.py
+*.xlsx
+*.xml
+
+# Documentation (keep only README)
+*.md
+!README.md
+
+# Shell scripts
+*.sh
+
+# Service files
+*.service
+
+# Base64 files
+base64_files/
+
+# AI directory
+ai/
+
+# Config directory
+config/
+
+# Makemodelmapped
+makemodelmapped/
+
+# HTML files (if not needed)
+*.html
+
+# Jupyter notebooks
+*.ipynb
+
+# Postman collections
+*.postman_collection.json
+

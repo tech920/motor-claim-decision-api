@@ -1,0 +1,27 @@
+========================================
+GITHUB REPOSITORY LINK
+========================================
+
+Main Repository:
+https://github.com/tech920/motor-claim-decision-api
+
+Browse Files:
+https://github.com/tech920/motor-claim-decision-api/tree/main
+
+TP Folder (if exists):
+https://github.com/tech920/motor-claim-decision-api/tree/main/MotorclaimdecisionlinuxTP
+
+CO Folder (if exists):
+https://github.com/tech920/motor-claim-decision-api/tree/main/MotorclaimdecisionlinuxCO
+
+========================================
+STEPS TO VERIFY:
+========================================
+1. Open: https://github.com/tech920/motor-claim-decision-api
+2. Browse all files and folders
+3. Check what exists
+4. Upload only missing files
+5. Don't overwrite existing files
+
+========================================
+
