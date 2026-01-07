@@ -1,0 +1,36 @@
+========================================
+QUICK UPLOAD - ALL FILES INCLUDING FOLDERS
+========================================
+
+Repository: https://github.com/tech920/motor-claim-decision-api
+
+EASIEST METHOD (GitHub Web):
+-----------------------------
+1. Go to: https://github.com/tech920/motor-claim-decision-api
+2. Click "Add file" → "Upload files"
+3. Upload root files first
+4. Create folder: MotorclaimdecisionlinuxTP/
+5. Upload all 9 TP files into that folder
+6. Create folder: MotorclaimdecisionlinuxCO/
+7. Upload all 9 CO files into that folder
+8. Commit changes
+
+USING GIT:
+----------
+cd D:\Motorclaimde
+git init
+git add .
+git commit -m "Initial commit: Complete API"
+git remote add origin https://github.com/tech920/motor-claim-decision-api.git
+git push -u origin main
+
+FILES TO UPLOAD:
+----------------
+Root: unified_api_server.py, requirements.txt, README.md, .gitignore, etc.
+TP Folder: 9 files (claim_processor.py, claim_processor_api.py, etc.)
+CO Folder: 9 files (claim_processor.py, claim_processor_api.py, etc.)
+
+Total: ~23-28 files
+
+========================================
+

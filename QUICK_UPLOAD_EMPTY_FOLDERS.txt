@@ -1,0 +1,35 @@
+========================================
+UPLOAD TO EMPTY FOLDERS
+========================================
+
+TP FOLDER (Empty - Need to upload):
+------------------------------------
+Link: https://github.com/tech920/motor-claim-decision-api/tree/main/MotorclaimdecisionlinuxTP
+
+Steps:
+1. Open the link above
+2. Click "Add file" → "Upload files"
+3. Upload all 9 files from: D:\Motorclaimde\MotorclaimdecisionlinuxTP\
+4. Commit changes
+
+Files to upload (9 files):
+- claim_processor.py
+- claim_processor_api.py
+- config_manager.py
+- unified_processor.py
+- excel_ocr_license_processor.py
+- auth_manager.py
+- api_server.py
+- claim_config.json
+- users.json
+
+CO FOLDER (Check if empty):
+----------------------------
+Link: https://github.com/tech920/motor-claim-decision-api/tree/main/MotorclaimdecisionlinuxCO
+
+If empty, upload all 9 files from: D:\Motorclaimde\MotorclaimdecisionlinuxCO\
+
+========================================
+TOTAL TO UPLOAD: 18 files (9 TP + 9 CO)
+========================================
+

@@ -1,0 +1,40 @@
+========================================
+MOTOR CLAIM DECISION API - READY FOR UPLOAD
+========================================
+
+Location: D:\Motorclaimde
+Total Files: 23 files
+
+STRUCTURE:
+----------
+Motorclaimde/
+├── unified_api_server.py (Main server)
+├── requirements.txt
+├── README.md
+├── .gitignore
+├── UPLOAD_GUIDE.md
+├── MotorclaimdecisionlinuxTP/ (9 files)
+└── MotorclaimdecisionlinuxCO/ (9 files)
+
+QUICK UPLOAD STEPS:
+-------------------
+1. cd D:\Motorclaimde
+2. git init
+3. git add .
+4. git commit -m "Initial commit: Motor Claim Decision API"
+5. Create repo on GitHub/GitLab
+6. git remote add origin <YOUR_REPO_URL>
+7. git push -u origin main
+
+CONNECT CURSOR AI:
+------------------
+1. Open Cursor
+2. Press Ctrl+Shift+P
+3. Type: Git: Clone
+4. Paste repository URL
+5. Open cloned folder
+
+========================================
+✅ READY FOR GITHUB/GITLAB UPLOAD!
+========================================
+

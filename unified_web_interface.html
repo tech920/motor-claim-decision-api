@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Motor Claim Decision API - CO & TP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        
+        .system-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .system-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid white;
+        }
+        
+        h1 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .party-card {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .party-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .party-number {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .remove-party {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .insurance-type-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .insurance-type-CO {
+            background: #667eea;
+            color: white;
+        }
+        
+        .insurance-type-TP {
+            background: #f5576c;
+            color: white;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .result-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .party-result {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="system-info">
+            <span class="system-badge">🔄 UNIFIED - CO & TP</span>
+            <h1>🚗 Motor Claim Decision API</h1>
+            <p class="subtitle">Process both Comprehensive (CO) and Third Party (TP) insurance claims</p>
+        </div>
+        
+        <div class="section">
+            <h2>Case Information</h2>
+            <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+                <label for="claimType" style="font-size: 16px; font-weight: 700; color: #856404; display: block; margin-bottom: 10px;">
+                    ⚠️ Claim Type * (Required)
+                </label>
+                <select id="claimType" required onchange="updateClaimTypeBadge(this.value)" style="font-size: 16px; padding: 12px; border: 2px solid #ffc107; background: white; font-weight: 600;">
+                    <option value="">-- Select Claim Type (CO or TP) --</option>
+                    <option value="CO">🔵 CO (Comprehensive)</option>
+                    <option value="TP">🔴 TP (Third Party)</option>
+                </select>
+                <small style="color: #856404; display: block; margin-top: 8px; font-weight: 500;">
+                    ⚠️ This field is MANDATORY. Select the type of claim to determine which decision logic (CO or TP) will be used for processing.
+                </small>
+                <span id="claimTypeBadge" class="insurance-type-badge" style="display: none; margin-top: 10px; font-size: 14px; padding: 8px 20px;"></span>
+            </div>
+            <div class="grid">
+                <div>
+                    <label for="caseNumber">Case Number *</label>
+                    <input type="text" id="caseNumber" placeholder="CASE-001" required>
+                </div>
+                <div>
+                    <label for="accidentDate">Accident Date *</label>
+                    <input type="date" id="accidentDate" required>
+                </div>
+            </div>
+            <div>
+                <label for="uploadDate">Upload Date</label>
+                <input type="date" id="uploadDate">
+            </div>
+            <div>
+                <label for="claimRequesterId">Claim Requester ID (Optional)</label>
+                <input type="text" id="claimRequesterId" placeholder="Enter claim requester ID">
+            </div>
+            <div class="grid">
+                <div>
+                    <label for="isDAA">isDAA (Optional)</label>
+                    <select id="isDAA">
+                        <option value="">-- Select --</option>
+                        <option value="TRUE">TRUE</option>
+                        <option value="FALSE">FALSE</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="suspectAsFraud">Suspect as Fraud (Optional)</label>
+                    <input type="text" id="suspectAsFraud" placeholder="Enter suspect fraud flag">
+                </div>
+            </div>
+            <div>
+                <label for="daaReasonEnglish">DAA Reason English (Optional)</label>
+                <textarea id="daaReasonEnglish" placeholder="Enter DAA reason in English..." rows="2"></textarea>
+            </div>
+            <div>
+                <label for="accidentDescription">Accident Description</label>
+                <textarea id="accidentDescription" placeholder="Enter detailed description..." rows="4"></textarea>
+            </div>
+            <div>
+                <label for="ldRepFile">LD Rep Attachment (HTML/Text File)</label>
+                <input type="file" id="ldRepFile" accept=".html,.htm,.txt,.pdf" onchange="handleFileUpload(event)">
+                <div id="fileInfo" style="margin-top: 10px; padding: 10px; background: #e9ecef; border-radius: 5px; display: none;">
+                    <span id="fileName"></span> (<span id="fileSize"></span>)
+                    <button type="button" onclick="clearFile()" style="margin-left: 10px; padding: 5px 10px; background: #dc3545; font-size: 12px;">Remove</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="party-header">
+                <h2>Parties Information</h2>
+                <button type="button" onclick="addParty()">+ Add Party</button>
+            </div>
+            <div id="partiesContainer"></div>
+        </div>
+        
+        <div class="section">
+            <button type="button" onclick="processClaim()" id="processBtn" style="width: 100%; padding: 15px; font-size: 18px;">
+                🚀 Process Claim
+            </button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 15px;">Processing claim... This may take a moment.</p>
+        </div>
+        
+        <div class="result-section" id="resultSection" style="display: none;">
+            <h2>Results</h2>
+            <div id="results"></div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = window.location.origin;
+        let authCredentials = null;
+        let partyCount = 0;
+        let ldRepBase64 = null;
+        
+        function promptForCredentials() {
+            const username = prompt('Enter username:');
+            if (username === null) return false;
+            const password = prompt('Enter password:');
+            if (password === null) return false;
+            authCredentials = btoa(username + ':' + password);
+            sessionStorage.setItem('authCredentials', authCredentials);
+            return true;
+        }
+        
+        function getAuthHeaders() {
+            if (!authCredentials) {
+                const stored = sessionStorage.getItem('authCredentials');
+                if (stored) {
+                    authCredentials = stored;
+                } else {
+                    if (!promptForCredentials()) return null;
+                }
+            }
+            return {'Authorization': 'Basic ' + authCredentials};
+        }
+        
+        async function fetchWithAuth(url, options = {}) {
+            const headers = getAuthHeaders();
+            if (!headers) throw new Error('Authentication cancelled');
+            options.headers = {...options.headers, ...headers};
+            let response = await fetch(url, options);
+            if (response.status === 401) {
+                sessionStorage.removeItem('authCredentials');
+                authCredentials = null;
+                if (promptForCredentials()) {
+                    options.headers = {...options.headers, ...getAuthHeaders()};
+                    response = await fetch(url, options);
+                } else {
+                    throw new Error('Authentication required');
+                }
+            }
+            return response;
+        }
+        
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64String = e.target.result.split(',')[1] || e.target.result;
+                ldRepBase64 = base64String;
+                document.getElementById('fileInfo').style.display = 'block';
+                document.getElementById('fileName').textContent = file.name;
+                document.getElementById('fileSize').textContent = formatFileSize(file.size);
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        function clearFile() {
+            ldRepBase64 = null;
+            document.getElementById('ldRepFile').value = '';
+            document.getElementById('fileInfo').style.display = 'none';
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+        }
+        
+        function addParty() {
+            partyCount++;
+            const container = document.getElementById('partiesContainer');
+            const partyDiv = document.createElement('div');
+            partyDiv.className = 'party-card';
+            partyDiv.id = `party-${partyCount}`;
+            
+            partyDiv.innerHTML = `
+                <div class="party-header">
+                    <span class="party-number">Party ${partyCount}</span>
+                    <button type="button" class="remove-party" onclick="removeParty(${partyCount})">Remove Party</button>
+                </div>
+                <div>
+                    <label>Insurance Type *</label>
+                    <select data-field="insurance_type" required onchange="updateInsuranceTypeBadge(${partyCount}, this.value)">
+                        <option value="">-- Select Insurance Type --</option>
+                        <option value="CO">CO (Comprehensive)</option>
+                        <option value="TP">TP (Third Party)</option>
+                    </select>
+                    <span id="badge-${partyCount}" class="insurance-type-badge" style="display: none;"></span>
+                </div>
+                <div class="grid">
+                    <div>
+                        <label>Party ID *</label>
+                        <input type="text" placeholder="1234567890" data-field="Party_ID" required>
+                    </div>
+                    <div>
+                        <label>Party Name *</label>
+                        <input type="text" placeholder="Ahmed Ali" data-field="Party_Name" required>
+                    </div>
+                </div>
+                <div>
+                    <label>Insurance Name *</label>
+                    <input type="text" placeholder="شركة الراجحي" data-field="Insurance_Name" required>
+                </div>
+                <div>
+                    <label>Policyholder ID *</label>
+                    <input type="text" placeholder="POL-123" data-field="Policyholder_ID" required>
+                </div>
+                <div class="grid">
+                    <div>
+                        <label>Liability (%) *</label>
+                        <input type="number" placeholder="50" data-field="Liability" min="0" max="100" required>
+                    </div>
+                    <div>
+                        <label>Vehicle Serial</label>
+                        <input type="text" placeholder="VIN123456" data-field="Vehicle_Serial">
+                    </div>
+                </div>
+                <div>
+                    <label>Vehicle Owner ID</label>
+                    <input type="text" placeholder="9876543210" data-field="VehicleOwnerId">
+                </div>
+                <div class="grid">
+                    <div>
+                        <label>License Type From Najm</label>
+                        <input type="text" placeholder="رخصة خاصة" data-field="License_Type_From_Najm">
+                    </div>
+                    <div>
+                        <label>License Expiry Date</label>
+                        <input type="date" data-field="License_Expiry_Date">
+                    </div>
+                </div>
+                <div class="grid">
+                    <div>
+                        <label>Car Make</label>
+                        <input type="text" placeholder="Toyota" data-field="carMake">
+                    </div>
+                    <div>
+                        <label>Car Model</label>
+                        <input type="text" placeholder="Camry" data-field="carModel">
+                    </div>
+                </div>
+                <div class="grid">
+                    <div>
+                        <label>Car Make (Najm)</label>
+                        <input type="text" placeholder="Toyota" data-field="carMake_Najm">
+                    </div>
+                    <div>
+                        <label>Car Model (Najm)</label>
+                        <input type="text" placeholder="Camry" data-field="carModel_Najm">
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(partyDiv);
+        }
+        
+        function updateInsuranceTypeBadge(partyNum, value) {
+            const badge = document.getElementById(`badge-${partyNum}`);
+            if (value) {
+                badge.style.display = 'inline-block';
+                badge.className = `insurance-type-badge insurance-type-${value}`;
+                badge.textContent = value === 'CO' ? '🔵 Comprehensive' : '🔴 Third Party';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+        
+        function removeParty(num) {
+            const partyDiv = document.getElementById(`party-${num}`);
+            if (partyDiv) {
+                partyDiv.remove();
+            }
+        }
+        
+        function updateClaimTypeBadge(value) {
+            const badge = document.getElementById('claimTypeBadge');
+            if (value) {
+                badge.style.display = 'inline-block';
+                badge.className = `insurance-type-badge insurance-type-${value}`;
+                badge.textContent = value === 'CO' ? '🔵 Comprehensive Claim' : '🔴 Third Party Claim';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        async function processClaim() {
+            const claimType = document.getElementById('claimType').value;
+            const caseNumber = document.getElementById('caseNumber').value;
+            const accidentDate = document.getElementById('accidentDate').value;
+            const uploadDate = document.getElementById('uploadDate').value;
+            const accidentDescription = document.getElementById('accidentDescription').value;
+            const isDAA = document.getElementById('isDAA').value;
+            const suspectAsFraud = document.getElementById('suspectAsFraud').value;
+            const daaReasonEnglish = document.getElementById('daaReasonEnglish').value;
+            
+            // Validate claim_type (mandatory)
+            if (!claimType || !['CO', 'TP'].includes(claimType)) {
+                alert('Please select Claim Type (CO or TP) - This is mandatory');
+                return;
+            }
+            
+            if (!caseNumber || !accidentDate) {
+                alert('Please fill in required fields: Case Number and Accident Date');
+                return;
+            }
+            
+            const parties = [];
+            const partyCards = document.querySelectorAll('.party-card');
+            if (partyCards.length === 0) {
+                alert('Please add at least one party');
+                return;
+            }
+            
+            partyCards.forEach(card => {
+                const party = {};
+                const inputs = card.querySelectorAll('[data-field]');
+                inputs.forEach(input => {
+                    const field = input.getAttribute('data-field');
+                    const value = input.value;
+                    if (value) {
+                        party[field] = value;
+                    }
+                });
+                
+                // If party doesn't have insurance_type, it will use claim_type
+                // But if provided, validate it
+                if (party.insurance_type && !['CO', 'TP'].includes(party.insurance_type)) {
+                    alert('Invalid Insurance Type for party. Must be CO or TP');
+                    return;
+                }
+                // If party doesn't have insurance_type, use claim_type
+                if (!party.insurance_type) {
+                    party.insurance_type = claimType;
+                }
+                
+                parties.push(party);
+            });
+            
+            const claimRequesterId = document.getElementById('claimRequesterId').value;
+            
+            const requestData = {
+                claim_type: claimType,  // Mandatory claim type
+                Case_Number: caseNumber,
+                Accident_Date: accidentDate,
+                Upload_Date: uploadDate,
+                Claim_requester_ID: claimRequesterId || null,
+                accident_description: accidentDescription,
+                isDAA: isDAA || null,
+                Suspect_as_Fraud: suspectAsFraud || null,
+                DaaReasonEnglish: daaReasonEnglish || null,
+                Parties: parties,
+                Name_LD_rep_64bit: ldRepBase64 || ""
+            };
+            
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('processBtn').disabled = true;
+            document.getElementById('resultSection').style.display = 'none';
+            
+            try {
+                const response = await fetchWithAuth(API_BASE + '/process-claim-simplified', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(requestData)
+                });
+                
+                const result = await response.json();
+                
+                document.getElementById('loading').classList.remove('show');
+                document.getElementById('processBtn').disabled = false;
+                document.getElementById('resultSection').style.display = 'block';
+                
+                displayResults(result);
+            } catch (error) {
+                document.getElementById('loading').classList.remove('show');
+                document.getElementById('processBtn').disabled = false;
+                alert('Error processing claim: ' + error.message);
+            }
+        }
+        
+        function displayResults(result) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            
+            if (result.Parties) {
+                result.Parties.forEach((party, idx) => {
+                    const partyDiv = document.createElement('div');
+                    partyDiv.className = 'party-result';
+                    
+                    const insuranceType = party.insurance_type || 'UNKNOWN';
+                    const badgeClass = insuranceType === 'CO' ? 'insurance-type-CO' : 'insurance-type-TP';
+                    const badgeText = insuranceType === 'CO' ? '🔵 CO' : '🔴 TP';
+                    
+                    partyDiv.innerHTML = `
+                        <h3>${party.Party || `Party ${idx + 1}`} <span class="insurance-type-badge ${badgeClass}">${badgeText}</span></h3>
+                        <p><strong>Decision:</strong> <span class="decision-${party.Decision}">${party.Decision}</span></p>
+                        <p><strong>Classification:</strong> ${party.Classification || 'N/A'}</p>
+                        <p><strong>Reasoning:</strong> ${party.Reasoning || 'N/A'}</p>
+                        ${party.Applied_Conditions ? `<p><strong>Applied Conditions:</strong> ${party.Applied_Conditions.join(', ')}</p>` : ''}
+                    `;
+                    resultsDiv.appendChild(partyDiv);
+                });
+            }
+        }
+        
+        // Add first party on load
+        window.onload = function() {
+            addParty();
+        };
+    </script>
+</body>
+</html>
