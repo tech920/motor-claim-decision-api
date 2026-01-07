@@ -241,17 +241,89 @@ class UnifiedClaimProcessor:
                 # Clean column names
                 self._mapping_df.columns = self._mapping_df.columns.str.strip()
                 print(f"✓ Loaded Make/Model mapping: {len(self._mapping_df)} rows")
+
+                # PERFORMANCE OPTIMIZATION: Create lookup dictionary for fast access
+                # This avoids iterrows() on every lookup
+                self._mapping_cache = {}
+                self._mapping_partial = {}
+                self._mapping_cols = {}
+
+                # Find column names once
+                for col in self._mapping_df.columns:
+                    col_clean = str(col).strip()
+                    if 'najm' in col_clean.lower() and 'make' in col_clean.lower():
+                        self._mapping_cols['make'] = col
+                    elif 'najm' in col_clean.lower() and 'model' in col_clean.lower():
+                        self._mapping_cols['model'] = col
+                    elif 'match' in col_clean.lower() and 'license' in col_clean.lower() and 'type' in col_clean.lower():
+                        self._mapping_cols['license'] = col
+
+                # Fallback if exact names not found
+                if 'make' not in self._mapping_cols:
+                    self._mapping_cols['make'] = 'Najm Make' if 'Najm Make' in self._mapping_df.columns else None
+                if 'model' not in self._mapping_cols:
+                    self._mapping_cols['model'] = ' Najm  Model' if ' Najm  Model' in self._mapping_df.columns else None
+                if 'license' not in self._mapping_cols:
+                    self._mapping_cols['license'] = 'Match License type' if 'Match License type' in self._mapping_df.columns else None
+
+                # Build lookup caches (key: (make_upper, model_upper) -> license_type)
+                if all(self._mapping_cols.values()):
+                    make_col = self._mapping_cols['make']
+                    model_col = self._mapping_cols['model']
+                    license_col = self._mapping_cols['license']
+
+                    make_vals = (
+                        self._mapping_df[make_col]
+                        .fillna("")
+                        .astype(str)
+                        .str.strip()
+                        .str.upper()
+                    )
+                    model_vals = (
+                        self._mapping_df[model_col]
+                        .fillna("")
+                        .astype(str)
+                        .str.strip()
+                        .str.upper()
+                    )
+                    license_vals = self._mapping_df[license_col]
+
+                    for make_val, model_val, license_val in zip(make_vals, model_vals, license_vals):
+                        if not make_val or not model_val:
+                            continue
+
+                        license_str = str(license_val).strip() if pd.notna(license_val) else ""
+
+                        key = (make_val, model_val)
+                        if key not in self._mapping_cache:
+                            self._mapping_cache[key] = license_str
+
+                        if make_val not in self._mapping_partial:
+                            self._mapping_partial[make_val] = []
+                        self._mapping_partial[make_val].append((model_val, license_str))
+
+                    print(f"✓ Built fast lookup cache: {len(self._mapping_cache)} exact matches")
+                else:
+                    self._mapping_cache = {}
+                    self._mapping_partial = {}
+                    self._mapping_cols = {}
             else:
                 print(f"⚠ Warning: Make/Model mapping file not found: {self.make_model_mapping_file}")
                 self._mapping_df = None
+                self._mapping_cache = {}
+                self._mapping_partial = {}
+                self._mapping_cols = {}
         except Exception as e:
             print(f"⚠ Warning: Could not load Make/Model mapping: {str(e)[:100]}")
             self._mapping_df = None
+            self._mapping_cache = {}
+            self._mapping_partial = {}
+            self._mapping_cols = {}
     
     def lookup_license_type_from_make_model(self, car_make: str, car_model: str) -> str:
         """
         Lookup License type from Make/Model mapping sheet
-        Matches carMake with "Najm Make" and carModel with " Najm  Model" columns
+        PERFORMANCE OPTIMIZED: Uses cached dictionary lookup instead of iterrows()
         
         Args:
             car_make: Car make value from request (to match with "Najm Make")
@@ -260,72 +332,105 @@ class UnifiedClaimProcessor:
         Returns:
             License type string from "Match License type" column, or empty string if not found
         """
+        # Use cached lookup if available (much faster)
+        if hasattr(self, '_mapping_cache') and self._mapping_cache:
+            if not car_make or not car_model:
+                return ""
+
+            car_make_clean = str(car_make).strip().upper()
+            car_model_clean = str(car_model).strip().upper()
+
+            if not car_make_clean or not car_model_clean:
+                return ""
+
+            # Try exact match from cache (O(1) lookup)
+            key = (car_make_clean, car_model_clean)
+            if key in self._mapping_cache:
+                return self._mapping_cache[key]
+
+            # Try partial/fuzzy matching from cache
+            if hasattr(self, '_mapping_partial') and self._mapping_partial:
+                if car_make_clean in self._mapping_partial:
+                    for model_val, license_val in self._mapping_partial[car_make_clean]:
+                        if (
+                            model_val == car_model_clean
+                            or car_model_clean in model_val
+                            or model_val in car_model_clean
+                        ):
+                            return license_val
+
+        # Fallback to original method if cache not available
         if self._mapping_df is None or self._mapping_df.empty:
             return ""
-        
+
         if not car_make or not car_model:
             return ""
-        
-        # Normalize inputs (strip, case-insensitive)
-        car_make_clean = str(car_make).strip()
-        car_model_clean = str(car_model).strip()
-        
+
+        car_make_clean = str(car_make).strip().upper()
+        car_model_clean = str(car_model).strip().upper()
+
         if not car_make_clean or not car_model_clean:
             return ""
-        
+
         try:
-            # Find the correct column names (handle spaces)
-            najm_make_col = None
-            najm_model_col = None
-            license_type_col = None
-            
-            for col in self._mapping_df.columns:
-                col_clean = str(col).strip()
-                if 'najm' in col_clean.lower() and 'make' in col_clean.lower():
-                    najm_make_col = col
-                elif 'najm' in col_clean.lower() and 'model' in col_clean.lower():
-                    najm_model_col = col
-                elif 'match' in col_clean.lower() and 'license' in col_clean.lower() and 'type' in col_clean.lower():
-                    license_type_col = col
-            
-            # Fallback if exact names not found
-            if not najm_make_col:
-                najm_make_col = 'Najm Make' if 'Najm Make' in self._mapping_df.columns else None
-            if not najm_model_col:
-                najm_model_col = ' Najm  Model' if ' Najm  Model' in self._mapping_df.columns else None
-            if not license_type_col:
-                license_type_col = 'Match License type' if 'Match License type' in self._mapping_df.columns else None
-            
+            # Use cached column names if available
+            if hasattr(self, '_mapping_cols') and self._mapping_cols:
+                najm_make_col = self._mapping_cols.get('make')
+                najm_model_col = self._mapping_cols.get('model')
+                license_type_col = self._mapping_cols.get('license')
+            else:
+                # Find columns (fallback)
+                najm_make_col = None
+                najm_model_col = None
+                license_type_col = None
+
+                for col in self._mapping_df.columns:
+                    col_clean = str(col).strip()
+                    if 'najm' in col_clean.lower() and 'make' in col_clean.lower():
+                        najm_make_col = col
+                    elif 'najm' in col_clean.lower() and 'model' in col_clean.lower():
+                        najm_model_col = col
+                    elif 'match' in col_clean.lower() and 'license' in col_clean.lower() and 'type' in col_clean.lower():
+                        license_type_col = col
+
+                if not najm_make_col:
+                    najm_make_col = 'Najm Make' if 'Najm Make' in self._mapping_df.columns else None
+                if not najm_model_col:
+                    najm_model_col = ' Najm  Model' if ' Najm  Model' in self._mapping_df.columns else None
+                if not license_type_col:
+                    license_type_col = 'Match License type' if 'Match License type' in self._mapping_df.columns else None
+
             if not najm_make_col or not najm_model_col or not license_type_col:
                 return ""
-            
-            # Try exact match first (case-insensitive, handle Arabic text)
+
             mask = (
-                (self._mapping_df[najm_make_col].astype(str).str.strip().str.upper() == car_make_clean.upper()) &
-                (self._mapping_df[najm_model_col].astype(str).str.strip().str.upper() == car_model_clean.upper())
+                (self._mapping_df[najm_make_col].astype(str).str.strip().str.upper() == car_make_clean) &
+                (self._mapping_df[najm_model_col].astype(str).str.strip().str.upper() == car_model_clean)
             )
             matches = self._mapping_df[mask]
-            
+
             if len(matches) > 0:
                 license_type = matches.iloc[0][license_type_col]
                 return str(license_type).strip() if pd.notna(license_type) else ""
-            
+
             # Try partial/fuzzy matching if exact match fails
-            # Match Make exactly, Model contains or vice versa
-            mask_make = self._mapping_df[najm_make_col].astype(str).str.strip().str.upper() == car_make_clean.upper()
+            mask_make = self._mapping_df[najm_make_col].astype(str).str.strip().str.upper() == car_make_clean
             if mask_make.any():
                 make_matches = self._mapping_df[mask_make]
-                # Try to find model that contains the input or vice versa
-                for idx, row in make_matches.iterrows():
+                for _, row in make_matches.iterrows():
                     model_val = str(row[najm_model_col]).strip().upper()
-                    if model_val == car_model_clean.upper() or car_model_clean.upper() in model_val or model_val in car_model_clean.upper():
+                    if (
+                        model_val == car_model_clean
+                        or car_model_clean in model_val
+                        or model_val in car_model_clean
+                    ):
                         license_type = row[license_type_col]
                         if pd.notna(license_type):
                             return str(license_type).strip()
-        
+
         except Exception as e:
             print(f"  Warning: Error in license type lookup: {str(e)[:100]}")
-        
+
         return ""
     
     def _translate_arabic_to_english(self, text: str) -> str:

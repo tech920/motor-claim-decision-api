@@ -270,29 +270,41 @@ class UnifiedClaimProcessor:
                     make_col = self._mapping_cols['make']
                     model_col = self._mapping_cols['model']
                     license_col = self._mapping_cols['license']
-                    
-                    # Use itertuples() instead of iterrows() - much faster
-                    for row in self._mapping_df.itertuples(index=False):
-                        make_val = str(getattr(row, make_col, '')).strip().upper() if pd.notna(getattr(row, make_col, '')) else ''
-                        model_val = str(getattr(row, model_col, '')).strip().upper() if pd.notna(getattr(row, model_col, '')) else ''
-                        license_val = getattr(row, license_col, '')
-                        
-                        if make_val and model_val:
-                            key = (make_val, model_val)
-                            if key not in self._mapping_cache:
-                                self._mapping_cache[key] = str(license_val).strip() if pd.notna(license_val) else ""
-                    
-                    # Also create partial matches for fuzzy lookup (make -> list of (model, license))
+
+                    # Build caches using DataFrame columns directly (handles spaces/special chars in column names)
+                    make_vals = (
+                        self._mapping_df[make_col]
+                        .fillna("")
+                        .astype(str)
+                        .str.strip()
+                        .str.upper()
+                    )
+                    model_vals = (
+                        self._mapping_df[model_col]
+                        .fillna("")
+                        .astype(str)
+                        .str.strip()
+                        .str.upper()
+                    )
+                    license_vals = self._mapping_df[license_col]
+
                     self._mapping_partial = {}
-                    for row in self._mapping_df.itertuples(index=False):
-                        make_val = str(getattr(row, make_col, '')).strip().upper() if pd.notna(getattr(row, make_col, '')) else ''
-                        model_val = str(getattr(row, model_col, '')).strip().upper() if pd.notna(getattr(row, model_col, '')) else ''
-                        license_val = getattr(row, license_col, '')
-                        
-                        if make_val and model_val:
-                            if make_val not in self._mapping_partial:
-                                self._mapping_partial[make_val] = []
-                            self._mapping_partial[make_val].append((model_val, str(license_val).strip() if pd.notna(license_val) else ""))
+
+                    for make_val, model_val, license_val in zip(make_vals, model_vals, license_vals):
+                        if not make_val or not model_val:
+                            continue
+
+                        license_str = str(license_val).strip() if pd.notna(license_val) else ""
+
+                        # Exact matches (O(1) lookup)
+                        key = (make_val, model_val)
+                        if key not in self._mapping_cache:
+                            self._mapping_cache[key] = license_str
+
+                        # Partial/fuzzy matches (make -> list of (model, license))
+                        if make_val not in self._mapping_partial:
+                            self._mapping_partial[make_val] = []
+                        self._mapping_partial[make_val].append((model_val, license_str))
                     
                     print(f"✓ Built fast lookup cache: {len(self._mapping_cache)} exact matches")
                 else:
