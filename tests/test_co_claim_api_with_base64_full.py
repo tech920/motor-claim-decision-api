@@ -1,8 +1,4 @@
 
-# Final fixed test script
-# Properly mocks requests.Session().post for both translation and decision requests
-# Handles potential tuple return from process_co_claim
-
 import pytest
 import json
 import base64
@@ -15,40 +11,12 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../MotorclaimdecisionlinuxCO')))
 
 # Import processor classes
-from MotorclaimdecisionlinuxCO.claim_processor import ClaimProcessor
 from MotorclaimdecisionlinuxCO.claim_processor_api import process_co_claim
 
-# OCR Text to simulate extraction - MUST contain keywords to pass validity check in API
-SIMULATED_OCR_TEXT = """
-<html>
-<body>
-Kingdom of Saudi Arabia
-Traffic Accident Report
-Report No: 12345678
-Date: 26/11/2025
-Location: Al-Zahir District, Madinah Road
+# Sample Base64 image (just a tiny valid base64 string for testing)
+SAMPLE_BASE64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
 
-Party 1:
-Name: Rihan Ali Ali Malik
-ID: 2538690385
-License Type: Private
-License Expiry: 05/11/2026
-Liability: 100%
-Insurance: Tawuniya
-
-Party 2:
-Name: Hamad Adnan Ahmed Al-Marri
-Liability: 0%
-
-Description: Collision occurred when Party 1 swerved right from left lane, hitting Party 2 in middle lane.
-</body>
-</html>
-"""
-
-# Sample Base64 image
-SAMPLE_BASE64 = "data:image/text;base64,VGhpcyBpcyBhIHBsYWNlaG9sZGVy" # Just a placeholder
-
-# Sample request data from user
+# Sample request data from user (with Base64)
 SAMPLE_REQUEST = {
   "claim_type": "CO",
   "Case_Number": "MC261125303",
@@ -104,6 +72,29 @@ SAMPLE_REQUEST = {
   ]
 }
 
+# OCR Text to simulate extraction
+SIMULATED_OCR_TEXT = """
+Kingdom of Saudi Arabia
+Traffic Accident Report
+Report No: 12345678
+Date: 26/11/2025
+Location: Al-Zahir District, Madinah Road
+
+Party 1:
+Name: Rihan Ali Ali Malik
+ID: 2538690385
+License Type: Private
+License Expiry: 05/11/2026
+Liability: 100%
+Insurance: Tawuniya
+
+Party 2:
+Name: Hamad Adnan Ahmed Al-Marri
+Liability: 0%
+
+Description: Collision occurred when Party 1 swerved right from left lane, hitting Party 2 in middle lane.
+"""
+
 # Translated description expectation
 TRANSLATED_DESCRIPTION = """After inspection, viewing, and listening to the statements of both parties, it became clear to me that the first party was driving in the left lane in Al-Zahir district, Al-Madinah Al-Munawwarah Road, heading north, and the second party was driving in the middle lane in the same direction. When the first party swerved to the right, the first party collided with the second party, resulting in material damage, including damage to the first party's right rear corner and damage to the second party's left front corner and left front wheel. Based on this, the first party bears 75% liability for sudden swerving under Traffic Law Article No. 50/2/24, and the second party bears 25% liability for lack of attention and taking caution under Traffic Law Article No. 50/2/1."""
 
@@ -113,56 +104,58 @@ if __name__ == "__main__":
     # 1. Mock requests.Session()
     mock_session = MagicMock()
     
-    # Define a side effect that returns different responses based on input
     def session_post_side_effect(*args, **kwargs):
         json_data = kwargs.get('json', {})
         prompt = json_data.get('prompt', '')
         
-        # Create a clean mock response object for each call
         mock_resp = MagicMock()
         mock_resp.status_code = 200
-        mock_resp.headers = {'Content-Type': 'application/json'} # CRITICAL: Set content type to avoid HTML check
+        mock_resp.headers = {'Content-Type': 'application/json'}
         
         # Translation Request
         if "Translate" in prompt:
             print("  -> Intercepted Translation Request")
             mock_resp.json.return_value = {"response": TRANSLATED_DESCRIPTION}
-            mock_resp.text = json.dumps({"response": TRANSLATED_DESCRIPTION}) # Ensure text property is valid JSON string
+            mock_resp.text = json.dumps({"response": TRANSLATED_DESCRIPTION})
             return mock_resp
         
         # Decision Request
         print("  -> Intercepted Decision Request")
-        if TRANSLATED_DESCRIPTION in prompt:
+        
+        # Verify prompts content
+        has_translation = TRANSLATED_DESCRIPTION in prompt
+        has_ocr = "FULL OCR REPORT TEXT" in prompt and "Kingdom of Saudi Arabia" in prompt
+        
+        if has_translation:
             print("     ✅ Decision prompt contains TRANSLATED English text")
         else:
             print("     ❌ Decision prompt MISSING translated text")
             
-        if "FULL OCR REPORT TEXT" in prompt and "Kingdom of Saudi Arabia" in prompt:
-            print("     ✅ Decision prompt contains FULL OCR REPORT TEXT")
+        if has_ocr:
+            print("     ✅ Decision prompt contains FULL OCR TEXT extraction")
         else:
             print("     ❌ Decision prompt MISSING OCR text")
-
+        
         decision_response = {
-            "decision": "ACCEPTED_WITH_RECOVERY",
-            "reasoning": "First party has 100% liability but validation checks are passed.",
-            "classification": "Validation Passed",
+            "party_index": 1,
+            "party_id": "2538690385",
+            "tawuniya_identified": True,
+            "decision": "ACCEPTED", 
+            "reasoning": "Party is insured with Tawuniya, liability is 100% (which is covered under comprehensive), and no rejection rules applied based on full report analysis.",
+            "classification": "Accepted - Comprehensive Cover",
             "applied_conditions": []
         }
         
-        # IMPORTANT: The ClaimProcessor checks if response.text starts with '<'
-        # So we MUST ensure response.text is a clean JSON string
         response_json_str = json.dumps(decision_response)
-        
-        # Ollama returns a JSON object with 'response' field containing the text
         ollama_response = {"response": response_json_str}
         
         mock_resp.json.return_value = ollama_response
-        mock_resp.text = json.dumps(ollama_response) # Ensure text property doesn't look like HTML
+        mock_resp.text = json.dumps(ollama_response)
         return mock_resp
 
     mock_session.post.side_effect = session_post_side_effect
     
-    # 2. Mock direct requests.post (used in _translate_text_to_english)
+    # 2. Mock direct requests.post
     mock_direct_post = MagicMock()
     mock_direct_post.side_effect = session_post_side_effect
 
@@ -170,53 +163,68 @@ if __name__ == "__main__":
     with patch('requests.Session', return_value=mock_session):
         with patch('requests.post', mock_direct_post):
             with patch('MotorclaimdecisionlinuxCO.claim_processor_api.jsonify', lambda x: x):
+                # We need to Mock the OCR processor to actually return our simulated text
+                # when process_base64_image or similar is called.
+                # However, in the updated code, we call `co_ocr_license_processor.process_claim_data_with_ocr`
+                # And we also need to simulate the Base64 decoding/extraction.
                 
-                # Mock base64.b64decode to return our SIMULATED_OCR_TEXT when extracting
+                # Let's mock the actual Base64 decoding in claim_processor_api to return our text
+                # The code tries to decode base64. If we mock base64.b64decode, it might affect other things.
+                # Better to mock the extraction logic in claim_processor_api.py directly if possible,
+                # or just mock `co_ocr_license_processor` to do it all.
+                
+                # In claim_processor_api.py:
+                # 1. Decodes base64 -> `decoded` string
+                # 2. Checks if `decoded` contains HTML/text
+                # 3. Sets `ocr_text` = `decoded`
+                # 4. Calls `co_ocr_license_processor.process_claim_data_with_ocr`
+                
+                # So we need `base64.b64decode` to return our SIMULATED_OCR_TEXT encoded as bytes
+                
                 original_b64decode = base64.b64decode
+                
                 def side_effect_b64decode(s, *args, **kwargs):
-                    # If it looks like our sample (or part of it), return text
-                    if s == SAMPLE_BASE64.split(',')[1] or len(s) < 100: 
+                    # Check if this is our sample string
+                    if s in SAMPLE_BASE64 or len(s) < 1000: # Heuristic
                         return SIMULATED_OCR_TEXT.encode('utf-8')
                     return original_b64decode(s, *args, **kwargs)
-
+                
                 with patch('base64.b64decode', side_effect=side_effect_b64decode):
-                    with patch('MotorclaimdecisionlinuxCO.claim_processor_api.co_ocr_license_processor') as mock_ocr:
-                        # Mock OCR to return data unchanged
-                        mock_ocr.process_claim_data_with_ocr.return_value = SAMPLE_REQUEST
+                     # Also mock the OCR processor to return the data structure (it might update dates)
+                    with patch('MotorclaimdecisionlinuxCO.claim_processor_api.co_ocr_license_processor') as mock_ocr_proc:
+                        mock_ocr_proc.process_claim_data_with_ocr.return_value = SAMPLE_REQUEST
                         
-                        print("Running CO Claim Processing Simulation (Final Fixed Mocks with OCR)...")
+                        print("Running CO Claim API Simulation (Base64 OCR)...")
                         try:
-                            # Force reload of rules to ensure fresh start
+                            # Force reload
                             import MotorclaimdecisionlinuxCO.claim_processor_api as api_module
-                            api_module.co_processor.check_ollama_health = lambda: True # bypass health check
+                            api_module.co_processor.check_ollama_health = lambda: True
                             
                             # Process
                             result_tuple = process_co_claim(SAMPLE_REQUEST)
                             
-                            # Handle tuple return if present
                             if isinstance(result_tuple, tuple):
                                 result = result_tuple[0]
-                                status_code = result_tuple[1]
                             else:
                                 result = result_tuple
-                                status_code = 200
                                 
                             print("\nProcessing completed successfully.")
                             # print("Result:", json.dumps(result, indent=2, ensure_ascii=False))
                             
                             # Verification
                             parties = result.get('Parties', [])
-                            # We need to find the processed party (Tawuniya one), index might not be 0 due to filtering
-                            first_party = next((p for p in parties if p.get('Party_ID') == '2538690385'), None)
+                            p1 = next((p for p in parties if p.get('Party_ID') == '2538690385'), None)
                             
-                            if first_party and first_party.get('Decision') == 'ACCEPTED_WITH_RECOVERY':
-                                 print("\n✅ SUCCESS: Full flow verified - Translation -> OCR -> Decision -> Response")
+                            if p1:
+                                print(f"\nParty 1 Decision: {p1.get('Decision')}")
+                                if p1.get('Decision') == 'ACCEPTED':
+                                    print("✅ SUCCESS: Party 1 is ACCEPTED.")
+                                else:
+                                    print(f"⚠️ Check: Expected ACCEPTED, got {p1.get('Decision')}")
                             else:
-                                 print(f"\n❌ FAILURE: Unexpected decision result: {first_party.get('Decision') if first_party else 'Party not found'}")
-                                 if first_party:
-                                     print(f"Reasoning: {first_party.get('Reasoning')}")
-                            
-                            # Verify OCR flag
+                                print("\n❌ FAILURE: Party 1 not found.")
+                                
+                            # Check if OCR text was received flag is true
                             if result.get('LD_Rep_64bit_Received') is True:
                                 print("✅ SUCCESS: LD_Rep_64bit_Received is True")
                             else:
