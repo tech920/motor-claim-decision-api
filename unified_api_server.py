@@ -16,8 +16,13 @@ from functools import wraps
 import traceback
 import sys
 
-# Add both CO and TP directories to path
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Base directory configuration
+# Auto-detect production vs dev environment
+if os.path.exists("/opt/Motorclaimdecision_main"):
+    BASE_DIR = "/opt/Motorclaimdecision_main"
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 CO_DIR = os.path.join(BASE_DIR, "MotorclaimdecisionlinuxCO")
 TP_DIR = os.path.join(BASE_DIR, "MotorclaimdecisionlinuxTP")
 
@@ -85,6 +90,12 @@ if os.path.exists(tp_config_file):
     print(f"✓ TP config file exists: {tp_config_file}")
 else:
     print(f"⚠ WARNING: TP config file NOT found: {tp_config_file}")
+
+# Import production path configuration
+try:
+    import config_paths
+except ImportError:
+    pass
 
 app = Flask(__name__)
 

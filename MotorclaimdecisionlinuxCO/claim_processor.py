@@ -724,6 +724,11 @@ Translation (Arabic parts only, keep English unchanged, use LD report terminolog
         # Build comprehensive accident description from all available data
         accident_desc = accident_info.get("AccidentDescription", accident_info.get("Accident_description", ""))
         
+        # Add full OCR report text if available (this is the "Full Report" requested)
+        # Assuming OCR text might be passed in accident_info under a special key or separate argument
+        # For now, let's check if it's in accident_info
+        ocr_text_content = accident_info.get("ocr_text", "") or accident_info.get("full_report_text", "")
+        
         # Enhance accident description with additional context from request if available
         case_number = accident_info.get("caseNumber", accident_info.get("Case_Number", ""))
         accident_date_str = accident_info.get("callDate", accident_info.get("Accident_Date", ""))
@@ -734,6 +739,11 @@ Translation (Arabic parts only, keep English unchanged, use LD report terminolog
         description_parts = []
         if accident_desc:
             description_parts.append(accident_desc)
+        
+        # CRITICAL: Append full OCR text if available to allow "Full Report" analysis
+        if ocr_text_content:
+            description_parts.append(f"\n--- FULL OCR REPORT TEXT ---\n{ocr_text_content}\n----------------------------\n")
+            
         if case_number:
             description_parts.append(f"Case Number: {case_number}")
         if accident_date_str:
@@ -954,7 +964,8 @@ Translation (Arabic parts only, keep English unchanged, use LD report terminolog
             "is_cooperative": is_cooperative,
             "is_insured_with_cooperative": is_insured_with_cooperative,  # CRITICAL: Explicit flag for Rule #2
             "is_comprehensive": is_comprehensive,  # CRITICAL: Explicit flag for Rule #1 (CO = comprehensive)
-            "accident_description": accident_desc[:get_data_limits().get("accident_description_max_length", 500)] if accident_desc else "",  # Limit description length from config
+            "accident_description": accident_desc[:get_data_limits().get("accident_description_max_length", 3000)] if accident_desc else "",  # Limit description length (increased to 3000 for full details)
+            "ocr_text": accident_info.get("ocr_text", "") or accident_info.get("full_report_text", ""), # Add OCR text directly to data root for prompt
             "party": {
                 "id": party_info.get("ID", ""),
                 "name": party_name,  # Translated if Arabic
@@ -1331,10 +1342,17 @@ Return exactly one JSON object, nothing else. Example:
         # OPTIMIZATION: Skip translation since qwen2.5:14b handles Arabic natively
         # Translation is slow and unnecessary - model can process Arabic directly
         # Uncomment below if translation is needed for other models
-        USE_TRANSLATION = False  # Set to False for speed (qwen2.5:14b handles Arabic)
+        USE_TRANSLATION = True  # ENABLED for CO as requested
         
         if USE_TRANSLATION:
             print(f"  🔄 Translating claim data to English before sending to Ollama...")
+            # Ensure accident description is translated if it exists
+            if accident_info and isinstance(accident_info, dict):
+                # Translate specific fields
+                desc_key = "AccidentDescription" if "AccidentDescription" in accident_info else "Accident_description"
+                if desc_key in accident_info and accident_info[desc_key]:
+                    accident_info[desc_key] = self._translate_text_to_english(accident_info[desc_key])
+            
             accident_info_english = self._translate_claim_data_to_english(accident_info)
             party_info_english = self._translate_claim_data_to_english(party_info)
             all_parties_english = None
@@ -1508,19 +1526,9 @@ Return exactly one JSON object, nothing else. Example:
                     f"⚠️ LLM IGNORED AUTHORITATIVE FLAG - This is a critical error!"
                 )
             
-            # CRITICAL: Code-level upgrade - If decision is ACCEPTED and liability < 100, upgrade to ACCEPTED_WITH_SUBROGATION
-            if decision_value == 'ACCEPTED' and liability < 100:
-                decision_result['decision'] = 'ACCEPTED_WITH_SUBROGATION'
-                decision_value = 'ACCEPTED_WITH_SUBROGATION'
-                # Update classification if it's generic
-                if 'ACCEPTED' in classification.upper() and 'SUBROGATION' not in classification.upper():
-                    decision_result['classification'] = 'ACCEPTED_WITH_SUBROGATION'
-                transaction_logger.info(
-                    f"DECISION_UPGRADED_BY_CODE | Party: {party_index} | Case: {case_number} | "
-                    f"Original_Decision: ACCEPTED | Liability: {liability} | "
-                    f"Upgraded_To: ACCEPTED_WITH_SUBROGATION | "
-                    f"Reason: Code-level check - liability < 100%"
-                )
+            # NOTE: Code-level upgrades (like liability < 100 -> ACCEPTED_WITH_SUBROGATION) have been removed
+            # to rely purely on the model's decision as requested ("no if else").
+            # The prompt already instructs the model to handle this logic.
             
             # Check for problematic classifications
             has_100_percent_rule = '100% liability' in classification or 'Basic Rule #1' in classification

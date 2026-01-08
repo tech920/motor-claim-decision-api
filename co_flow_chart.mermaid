@@ -1,0 +1,82 @@
+
+flowchart TD
+    subgraph Client ["Client / Request"]
+        REQ[("POST /process-claim-simplified")]
+    end
+
+    subgraph API_Layer ["API Layer (unified_api_server.py)"]
+        R_MAIN{"Route Request"}
+        AUTH{"Auth Check"}
+        R_CO[("Route to CO Path")]
+    end
+
+    subgraph CO_Module ["CO Processing Module"]
+        H_API[("claim_processor_api.py")]
+        
+        subgraph Pre_Processing ["Pre-Processing"]
+            OCR_CHK{"Has Base64?"}
+            OCR_EXT[("Extract OCR Text")]
+            OCR_PROC[("excel_ocr_license_processor.py")]
+            
+            CONTEXT[("Convert ALL Parties (Preserve Context)")]
+            
+            FILTER{"Filter Check"}
+            FILTER_LOG[("Tawuniya Only?")]
+            
+            TRANS_CHK{"Has Arabic?"}
+            TRANS_EXEC[("Translate to English")]
+            TRANS_LLM[("Ollama (llama3.2)")]
+        end
+        
+        subgraph Core_Logic ["Core Logic (claim_processor.py)"]
+            PROMPT[("Build Prompt (Includes 29 Rules + Subrogation Logic)")]
+            
+            subgraph Model_Interaction ["Model Interaction"]
+                LLM_DEC[("Ollama (qwen2.5:3b)")]
+                DEC_JSON[("Decision JSON")]
+            end
+        end
+    end
+
+    %% Connections
+    REQ --> AUTH
+    AUTH -- Valid --> R_MAIN
+    R_MAIN -- claim_type='CO' --> R_CO
+    R_CO --> H_API
+    
+    %% OCR Flow
+    H_API --> OCR_CHK
+    OCR_CHK -- Yes --> OCR_EXT
+    OCR_EXT --> OCR_PROC
+    OCR_PROC --> H_API
+    
+    %% Context & Filtering Flow
+    H_API --> CONTEXT
+    CONTEXT --> FILTER
+    FILTER -- Non-Tawuniya --> FILTER_LOG
+    FILTER_LOG -- SKIPPED --> RES_SKIP[("Response: SKIPPED")]
+    
+    %% Translation Flow
+    FILTER -- Tawuniya --> TRANS_CHK
+    TRANS_CHK -- Yes --> TRANS_EXEC
+    TRANS_EXEC --> TRANS_LLM
+    TRANS_LLM --> TRANS_EXEC
+    TRANS_EXEC --> PROMPT
+    TRANS_CHK -- No --> PROMPT
+    
+    %% Decision Flow
+    PROMPT --> LLM_DEC
+    LLM_DEC --> DEC_JSON
+    DEC_JSON --> RES_FINAL
+    
+    %% Response
+    RES_FINAL[("Response: JSON Decision")] --> Client
+    
+    %% Styles
+    classDef process fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef decision fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
+    classDef component fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px;
+    
+    class H_API,OCR_EXT,TRANS_EXEC,PROMPT,SUB_UPG process;
+    class REQ,OCR_CHK,FILTER,TRANS_CHK,SUB_CHK decision;
+    class OCR_PROC,TRANS_LLM,LLM_DEC component;

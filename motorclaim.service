@@ -1,0 +1,20 @@
+[Unit]
+Description=Motor Claim Decision API Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/Motorclaimdecision_main
+Environment="MOTORCLAIM_BASE_DIR=/opt/Motorclaimdecision_main"
+Environment="PYTHONPATH=/opt/Motorclaimdecision_main"
+# Set Tesseract Data Prefix
+Environment="TESSDATA_PREFIX=/opt/Library/Tesseract-OCR/tessdata/"
+# Add Poppler and Tesseract to PATH
+Environment="PATH=/opt/Library/poppler-25.07.0/Library/bin:/opt/Library/poppler-25.07.0/Library/:/opt/Library/Tesseract-OCR/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/usr/bin/python3 unified_api_server.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+2026-01-07 21:31:09 | UNIFIED | REQUEST | GET | /health | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | UNIFIED | RESPONSE | GET | /health | Status: 200 | Size: 187 bytes
+2026-01-07 21:31:09 | UNIFIED | REQUEST | GET | /api/health | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | UNIFIED | RESPONSE | GET | /api/health | Status: 200 | Size: 187 bytes
+2026-01-07 21:31:09 | UNIFIED | REQUEST | POST | /process-claim-simplified | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | MAIN_ROUTER_REQUEST | Method: POST | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | MAIN_ROUTER_ERROR | Error: No data provided | Status: 400
+2026-01-07 21:31:09 | UNIFIED | RESPONSE | POST | /process-claim-simplified | Status: 400 | Size: 29 bytes
+2026-01-07 21:31:09 | UNIFIED | REQUEST | POST | /process-claim-simplified | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | MAIN_ROUTER_REQUEST | Method: POST | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | MAIN_ROUTER_ERROR | Error: Invalid structure: 'Parties' array is required | Status: 400
+2026-01-07 21:31:09 | UNIFIED | RESPONSE | POST | /process-claim-simplified | Status: 400 | Size: 59 bytes
+2026-01-07 21:31:09 | UNIFIED | REQUEST | POST | /process-claim-simplified | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | MAIN_ROUTER_REQUEST | Method: POST | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | MAIN_ROUTER_ERROR | Error: Missing or invalid 'claim_type' parameter. Required: 'CO' or 'TP' | Status: 400
+2026-01-07 21:31:09 | UNIFIED | RESPONSE | POST | /process-claim-simplified | Status: 400 | Size: 78 bytes
+2026-01-07 21:31:09 | UNIFIED | REQUEST | POST | /process-claim-simplified | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | MAIN_ROUTER_REQUEST | Method: POST | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | MAIN_ROUTER_ERROR | Error: Missing or invalid 'claim_type' parameter. Required: 'CO' or 'TP' | Status: 400
+2026-01-07 21:31:09 | UNIFIED | RESPONSE | POST | /process-claim-simplified | Status: 400 | Size: 78 bytes
+2026-01-07 21:31:09 | UNIFIED | REQUEST | POST | /process-claim-simplified | IP: 127.0.0.1 | User-Agent: Werkzeug/3.1.4
+2026-01-07 21:31:09 | UNIFIED | RESPONSE | POST | /process-claim-simplified | Status: 401 | Size: 90 bytes
