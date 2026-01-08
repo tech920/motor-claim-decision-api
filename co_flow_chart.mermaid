@@ -18,6 +18,8 @@ flowchart TD
             OCR_EXT[("Extract OCR Text")]
             OCR_PROC[("excel_ocr_license_processor.py")]
             
+            CONTEXT[("Convert ALL Parties (Preserve Context)")]
+            
             FILTER{"Filter Check"}
             FILTER_LOG[("Tawuniya Only?")]
             
@@ -48,8 +50,9 @@ flowchart TD
     OCR_EXT --> OCR_PROC
     OCR_PROC --> H_API
     
-    %% Filtering Flow
-    H_API --> FILTER
+    %% Context & Filtering Flow
+    H_API --> CONTEXT
+    CONTEXT --> FILTER
     FILTER -- Non-Tawuniya --> FILTER_LOG
     FILTER_LOG -- SKIPPED --> RES_SKIP[("Response: SKIPPED")]
     

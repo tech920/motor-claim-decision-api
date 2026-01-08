@@ -326,87 +326,16 @@ def process_co_claim(data):
         except Exception as e:
             transaction_logger.error(f"CO_FILTER_CONFIG_ERROR | Case: {case_number} | Error: {str(e)[:200]}")
         
-        # Convert parties and apply Tawuniya filter
-        converted_parties = []
+        # Convert ALL parties first to ensure full context for LLM
+        all_converted_parties = []
+        parties_to_process = []
         skipped_parties = []
         
+        # Step 1: Convert all parties
         for idx, party in enumerate(data["Parties"]):
-            # Use claim_type "CO" as insurance_type for internal processing (response building, etc.)
-            # BUT: insurance_type sent to Ollama should be empty (assume comprehensive) - handled in claim_processor.py
-            claim_type = "CO"  # This is the claim type (CO = Comprehensive)
-            insurance_type = claim_type  # Use internally for response building
-            
-            # Apply Tawuniya filter - STRICT FILTERING (ENHANCED - SAME AS TP)
-            if only_process_tawuniya:
-                insurance_name = party.get("Insurance_Name", "").strip()
-                is_tawuniya = False
-                insurance_name_lower = insurance_name.lower() if insurance_name else ""
-                
-                transaction_logger.info(
-                    f"TAWUNIYA_FILTER_CHECK | Case: {case_number} | Party: {idx + 1} | "
-                    f"Party_ID: {party.get('Party_ID', 'Unknown')} | Insurance_Name: '{insurance_name}' | "
-                    f"Insurance_Name_Lower: '{insurance_name_lower}'"
-                )
-                
-                # Enhanced Tawuniya detection (SAME AS TP) - More robust matching
-                # Check 1: Direct lowercase match for "tawuniya"
-                if insurance_name_lower and "tawuniya" in insurance_name_lower:
-                    is_tawuniya = True
-                    transaction_logger.info(
-                        f"TAWUNIYA_MATCH | Case: {case_number} | Party: {idx + 1} | "
-                        f"Match_Type: Contains_'tawuniya' | Insurance_Name: '{insurance_name}'"
-                    )
-                # Check 2: Check for "cooperative insurance company" (might be Tawuniya)
-                elif insurance_name_lower and "cooperative insurance company" in insurance_name_lower:
-                    is_tawuniya = True
-                    transaction_logger.info(
-                        f"TAWUNIYA_MATCH | Case: {case_number} | Party: {idx + 1} | "
-                        f"Match_Type: Contains_'cooperative_insurance_company' | Insurance_Name: '{insurance_name}'"
-                    )
-                # Check 3: Arabic name check
-                elif insurance_name and ("التعاونية" in insurance_name or "التعاونية للتأمين" in insurance_name):
-                    is_tawuniya = True
-                    transaction_logger.info(
-                        f"TAWUNIYA_MATCH | Case: {case_number} | Party: {idx + 1} | "
-                        f"Match_Type: Contains_Arabic_Cooperative | Insurance_Name: '{insurance_name}'"
-                    )
-                # Check 4: Match against configured names (exact or partial match)
-                elif insurance_name_lower:
-                    for tawuniya_name in tawuniya_insurance_names:
-                        if not tawuniya_name:
-                            continue
-                        tawuniya_lower = tawuniya_name.lower().strip()
-                        # More flexible matching: check if either string contains the other
-                        if (tawuniya_lower in insurance_name_lower or 
-                            insurance_name_lower in tawuniya_lower or
-                            insurance_name_lower == tawuniya_lower):
-                            is_tawuniya = True
-                            transaction_logger.info(
-                                f"TAWUNIYA_MATCH | Case: {case_number} | Party: {idx + 1} | "
-                                f"Match_Type: Configured_Name_Match | "
-                                f"Insurance_Name: '{insurance_name}' | Configured_Name: '{tawuniya_name}'"
-                            )
-                            break
-                
-                if not is_tawuniya:
-                    skipped_parties.append({
-                        "index": idx,
-                        "party_id": party.get("Party_ID", ""),
-                        "insurance_name": insurance_name,
-                        "reason": "Not insured with Tawuniya Cooperative Insurance Company - Filtered out"
-                    })
-                    transaction_logger.info(
-                        f"PARTY_FILTERED_OUT | Case: {case_number} | Party: {idx + 1} | "
-                        f"Party_ID: {party.get('Party_ID', 'Unknown')} | Insurance_Name: '{insurance_name}' | "
-                        f"Reason: Not_Tawuniya | Action: Removed_From_Processing"
-                    )
-                    continue  # Skip this party - DO NOT ADD TO converted_parties
-                else:
-                    transaction_logger.info(
-                        f"PARTY_ACCEPTED | Case: {case_number} | Party: {idx + 1} | "
-                        f"Party_ID: {party.get('Party_ID', 'Unknown')} | Insurance_Name: '{insurance_name}' | "
-                        f"Reason: Tawuniya_Verified | Action: Added_To_Processing"
-                    )
+            # Use claim_type "CO" as insurance_type for internal processing
+            claim_type = "CO"
+            insurance_type = claim_type
             
             # Convert party data
             liability = party.get("Liability", "0")
@@ -416,14 +345,8 @@ def process_co_claim(data):
                 liability = 0
             
             insurance_name = party.get("Insurance_Name", "")
-            
-            # Extract insurance_type from party data (optional parameter)
-            # If provided, use it (e.g., "CO", "comprehensive", "TP", etc.)
-            # If not provided, will default to empty (assume comprehensive) in claim_processor.py
             party_insurance_type = party.get("insurance_type", party.get("Insurance_Type", ""))
             
-            # Extract Policyholdername from party data (optional parameter)
-            # Supports multiple field name variations
             policyholder_name = (
                 party.get("Policyholdername") or
                 party.get("Policyholder_Name") or
@@ -439,9 +362,9 @@ def process_co_claim(data):
                 "policyNumber": party.get("Policyholder_ID", ""),
                 "insuranceCompanyID": "",
                 "vehicleID": party.get("Vehicle_Serial", ""),
-                "insuranceType": party_insurance_type,  # Add insurance_type from party data (optional)
-                "InsuranceType": party_insurance_type,  # Alternative field name
-                "insurance_type": party_insurance_type  # Alternative field name
+                "insuranceType": party_insurance_type,
+                "InsuranceType": party_insurance_type,
+                "insurance_type": party_insurance_type
             }
             
             converted_party = {
@@ -463,20 +386,74 @@ def process_co_claim(data):
                 "License_Expiry_Date": party.get("License_Expiry_Date", ""),
                 "License_Expiry_Last_Updated": party.get("License_Expiry_Last_Updated", ""),
                 "Policyholder_ID": party.get("Policyholder_ID", ""),
-                "Policyholdername": policyholder_name,  # NEW: Policyholder name parameter
-                "Policyholder_Name": policyholder_name,  # Alternative field name
+                "Policyholdername": policyholder_name,
+                "Policyholder_Name": policyholder_name,
                 "Party": party.get("Party", f"Party {idx + 1}"),
-                "insurance_type": insurance_type
+                "insurance_type": insurance_type,
+                "_original_index": idx # Keep track of original index
             }
             
-            converted_parties.append(converted_party)
-            transaction_logger.info(
-                f"PARTY_ADDED_TO_PROCESSING | Case: {case_number} | Party: {idx + 1} | "
-                f"Party_ID: {party.get('Party_ID', 'Unknown')}"
-            )
+            all_converted_parties.append(converted_party)
+
+        # Step 2: Apply Tawuniya filter to determine which parties to process
+        for idx, converted_party in enumerate(all_converted_parties):
+            party_id = converted_party.get("ID", "")
+            insurance_name = converted_party.get("Insurance_Info", {}).get("ICEnglishName", "")
+            
+            if only_process_tawuniya:
+                is_tawuniya = False
+                insurance_name_lower = insurance_name.lower() if insurance_name else ""
+                
+                transaction_logger.info(
+                    f"TAWUNIYA_FILTER_CHECK | Case: {case_number} | Party: {idx + 1} | "
+                    f"Party_ID: {party_id} | Insurance_Name: '{insurance_name}'"
+                )
+                
+                # Enhanced Tawuniya detection
+                if insurance_name_lower and "tawuniya" in insurance_name_lower:
+                    is_tawuniya = True
+                elif insurance_name_lower and "cooperative insurance company" in insurance_name_lower:
+                    is_tawuniya = True
+                elif insurance_name and ("التعاونية" in insurance_name or "التعاونية للتأمين" in insurance_name):
+                    is_tawuniya = True
+                elif insurance_name_lower:
+                    for tawuniya_name in tawuniya_insurance_names:
+                        if not tawuniya_name:
+                            continue
+                        tawuniya_lower = tawuniya_name.lower().strip()
+                        if (tawuniya_lower in insurance_name_lower or 
+                            insurance_name_lower in tawuniya_lower or
+                            insurance_name_lower == tawuniya_lower):
+                            is_tawuniya = True
+                            break
+                
+                if not is_tawuniya:
+                    skipped_parties.append({
+                        "index": idx,
+                        "party_id": party_id,
+                        "insurance_name": insurance_name,
+                        "reason": "Not insured with Tawuniya Cooperative Insurance Company - Filtered out"
+                    })
+                    transaction_logger.info(
+                        f"PARTY_FILTERED_OUT | Case: {case_number} | Party: {idx + 1} | "
+                        f"Party_ID: {party_id} | Reason: Not_Tawuniya"
+                    )
+                else:
+                    parties_to_process.append(converted_party)
+                    transaction_logger.info(
+                        f"PARTY_ADDED_TO_PROCESSING | Case: {case_number} | Party: {idx + 1} | "
+                        f"Party_ID: {party_id} | Reason: Tawuniya_Verified"
+                    )
+            else:
+                # Process all parties if filter is disabled
+                parties_to_process.append(converted_party)
+                transaction_logger.info(
+                    f"PARTY_ADDED_TO_PROCESSING | Case: {case_number} | Party: {idx + 1} | "
+                    f"Party_ID: {party_id} | Reason: Filter_Disabled"
+                )
         
         # If no parties to process after filtering, return early
-        if not converted_parties:
+        if not parties_to_process:
             transaction_logger.warning(
                 f"NO_PARTIES_TO_PROCESS | Case: {case_number} | "
                 f"Total_Parties: {len(data['Parties'])} | Filtered_Out: {len(skipped_parties)}"
@@ -503,18 +480,18 @@ def process_co_claim(data):
             "Case_Info": {
                 "Accident_info": accident_info,
                 "parties": {
-                    "Party_Info": converted_parties
+                    "Party_Info": all_converted_parties # CRITICAL: Send ALL parties for context
                 }
             }
         }
         
-        # Process parties in parallel
+        # Process selected parties in parallel
         results = []
-        max_workers = min(len(converted_parties), 4)
+        max_workers = min(len(parties_to_process), 4)
         
         transaction_logger.info(
             f"PARALLEL_PROCESSING_START | Case: {case_number} | "
-            f"Parties_Count: {len(converted_parties)} | Max_Workers: {max_workers}"
+            f"Parties_To_Process: {len(parties_to_process)} | All_Parties_Context: {len(all_converted_parties)}"
         )
         
         processing_start_time = datetime.now()
@@ -522,7 +499,7 @@ def process_co_claim(data):
         def process_single_party(idx, party):
             """Process a single party using CO processor"""
             nonlocal claim_data, ocr_text, ld_rep_base64, isDAA, suspect_as_fraud, daa_reason_english
-            nonlocal case_number, accident_date, converted_parties, only_process_tawuniya, tawuniya_insurance_names
+            nonlocal case_number, accident_date, all_converted_parties, only_process_tawuniya, tawuniya_insurance_names
             # ollama_url and ollama_model are module-level, accessible without nonlocal
             
             try:
